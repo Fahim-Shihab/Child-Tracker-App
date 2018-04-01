@@ -4,10 +4,12 @@
     android:layout_height="wrap_content"
     android:padding="10dp"
     android:orientation="vertical"
-    android:elevation="5dp"
+    android:elevation="15dp"
+    android:layout_margin="5dp"
     >
 
     <LinearLayout
+        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
