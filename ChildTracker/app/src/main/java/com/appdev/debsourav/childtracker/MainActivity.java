@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -98,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
                     String number = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
                     String body = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.BODY));
                     String name = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.PERSON));
-                    Date dateFormat = new Date(Long.valueOf(smsDate));
+                    Date date = new Date(Long.valueOf(smsDate));
+                    String dateFormat= new SimpleDateFormat("MM/dd").format(date);
                     String type = "";
                     Calendar today = Calendar.getInstance();
                     today.clear(Calendar.HOUR);
@@ -121,17 +123,17 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
 
-                    if (!(dateFormat.before(dateRange))) {
+                    if (!(date.before(dateRange))) {
                         stringBuffer.append("\nNumber:---" + number +
                                 " \nBody:--- "
-                                + body + "\nName:--- " + name + " \nDate:--- " + dateFormat
+                                + body + "\nName:--- " + name + " \nDate:--- " + date
                                 + " \nMessage Type :--- " + type);
                         stringBuffer.append("\n\n");
                         c.moveToNext();
                     }
 
-                    Message msg= new Message(number, body, name, ""+dateFormat, type);
-                    msgRef.child(""+dateFormat).setValue(msg);
+                    Message msg= new Message(number, body, name, dateFormat, type, date+"");
+                    msgRef.child(""+date).setValue(msg);
 
 
                 }

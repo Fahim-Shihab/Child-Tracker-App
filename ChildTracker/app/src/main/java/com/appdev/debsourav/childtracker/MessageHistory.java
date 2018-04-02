@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -49,7 +51,8 @@ public class MessageHistory extends AppCompatActivity {
                     String number = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
                     String body = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.BODY));
                     String name = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.PERSON));
-                    Date dateFormat = new Date(Long.valueOf(smsDate));
+                    Date date = new Date(Long.valueOf(smsDate));
+                    String dateFormat= new SimpleDateFormat("MM/dd/yyyy").format(date);
                     String type = "";
                     Calendar today = Calendar.getInstance();
                     today.clear(Calendar.HOUR);
@@ -72,7 +75,7 @@ public class MessageHistory extends AppCompatActivity {
                             break;
                     }
 
-                    if (!(dateFormat.before(dateRange))) {
+                    if (!(date.before(dateRange))) {
                         stringBuffer.append("\nNumber:---" + number +
                                 " \nBody:--- "
                                 + body + "\nName:--- " + name + " \nDate:--- " + dateFormat
@@ -81,7 +84,7 @@ public class MessageHistory extends AppCompatActivity {
                         c.moveToNext();
                     }
 
-                    Message msg= new Message(number, body, name, ""+dateFormat, type);
+                    Message msg= new Message(number, body, name, ""+dateFormat, type, date+"");
                     msgRef.child(""+dateFormat).setValue(msg);
 
 

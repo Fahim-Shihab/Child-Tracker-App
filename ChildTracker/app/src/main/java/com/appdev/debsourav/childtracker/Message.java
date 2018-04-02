@@ -5,17 +5,18 @@ package com.appdev.debsourav.childtracker;
  */
 
 public class Message {
-    String number, body, name, date, type;
+    String number, body, name, date, type, fullDate;
 
     public Message() {
     }
 
-    public Message(String number, String body, String name, String date, String type) {
+    public Message(String number, String body, String name, String date, String type, String fullDate) {
         this.number = number;
         this.body = body;
         this.name = name;
         this.date = date;
         this.type = type;
+        this.fullDate = fullDate;
     }
 
     public String getNumber() {
@@ -56,5 +57,13 @@ public class Message {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getFullDate() {
+        return fullDate;
+    }
+
+    public void setFullDate(String fullDate) {
+        this.fullDate = fullDate;
     }
 }
