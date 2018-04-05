@@ -62,11 +62,5 @@ public class MessageLog extends AppCompatActivity {
         };
 
         msgRView.setAdapter(firebaseRecyclerAdapter);
-
     }
-
-
-
-
-
 }

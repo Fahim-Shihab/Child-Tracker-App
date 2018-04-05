@@ -31,9 +31,9 @@ public class MsgViewHolder extends RecyclerView.ViewHolder{
         txtDate.setText(Date);
     }
 
-    public void setBody(String Body){
+    public void setBody(String body){
 
-        txtBody.setText(Body);
+        txtBody.setText(body);
 
     }
 
