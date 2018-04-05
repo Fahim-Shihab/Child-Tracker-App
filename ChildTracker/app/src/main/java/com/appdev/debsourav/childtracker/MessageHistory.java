@@ -7,14 +7,11 @@ import android.os.Bundle;
 import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -22,21 +19,21 @@ import java.util.GregorianCalendar;
 public class MessageHistory extends AppCompatActivity {
 
     TextView txtMsgs;
-    DatabaseReference msgRef;
+    static DatabaseReference msgRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_msg_history);
         txtMsgs= findViewById(R.id.txtMsgs);
-        msgRef= FirebaseDatabase.getInstance().getReference("Messages");
+        msgRef = FirebaseDatabase.getInstance().getReference("Messages");
 
-        String messagelog = getAllSms(getApplicationContext());
-        txtMsgs.setText(messagelog);
+        //String messagelog = getAllSms(getApplicationContext());
+        //txtMsgs.setText(messagelog);
 
     }
 
-    public String getAllSms(Context context) {
+    public static void getAllSms(Context context) {
 
         StringBuffer stringBuffer = new StringBuffer();
         ContentResolver cr = context.getContentResolver();
@@ -90,11 +87,10 @@ public class MessageHistory extends AppCompatActivity {
 
                 }
             } else {
-                Toast.makeText(this, "No message to show!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MessageHistory.this, "No message to show!", Toast.LENGTH_SHORT).show();
             }
 
         }
-        return stringBuffer.toString();
     }
 
     public static Date addDays(Date date, int days) {

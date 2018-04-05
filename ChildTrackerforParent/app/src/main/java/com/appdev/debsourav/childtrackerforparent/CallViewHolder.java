@@ -21,6 +21,12 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
         txtCaller.setText("Phone number: "+phNumber);
     }
 
+    public void setCallerName(String Name){
+        TextView txtCaller= callView.findViewById(R.id.caller);
+
+        txtCaller.setText("Call from/to: "+Name);
+    }
+
     public void setCallType(String callType){
         TextView txtCallType= callView.findViewById(R.id.callType);
         txtCallType.setText("Call type: "+callType);
@@ -28,8 +34,7 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
 
     public void setCallDate(String callDate){
         TextView txtCallDate= callView.findViewById(R.id.callDate);
-        txtCallDate.setText("Call type: "+callDate);
+        txtCallDate.setText("Call date: "+callDate);
 
     }
-
 }

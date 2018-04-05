@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseReference mRef;
     RecyclerView recyclerView;
-    Button btnMsgLog;
+    Button btnMsgLog, Applog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +36,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Applog= findViewById(R.id.btnApp);
+
+        Applog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), AppLog.class));
+            }
+        });
+
         FirebaseRecyclerAdapter <Call, CallViewHolder> firebaseRecyclerAdapter= new FirebaseRecyclerAdapter <Call, CallViewHolder>
                 (Call.class, R.layout.call_card, CallViewHolder.class, mRef) {
             @Override
             protected void populateViewHolder(CallViewHolder viewHolder, Call model, int position) {
                 viewHolder.setCaller(model.getPhNumber());
+                viewHolder.setCallerName(model.getCallerName());
                 viewHolder.setCallType(model.getCallType());
                 viewHolder.setCallDate(model.getCallDate());
             }

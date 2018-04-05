@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MessageLog" />
-        <activity android:name=".MessageBody"></activity>
+        <activity android:name=".MessageBody" />
+        <activity android:name=".AppLog"></activity>
     </application>
 
 </manifest>
