@@ -49,7 +49,7 @@ public class MessageHistory extends AppCompatActivity {
                     String body = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.BODY));
                     String name = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.PERSON));
                     Date date = new Date(Long.valueOf(smsDate));
-                    String dateFormat= new SimpleDateFormat("MM/dd/yyyy").format(date);
+                    String dateFormat = new SimpleDateFormat("MM/dd/yyyy").format(date);
                     String type = "";
                     Calendar today = Calendar.getInstance();
                     today.clear(Calendar.HOUR);
@@ -79,11 +79,11 @@ public class MessageHistory extends AppCompatActivity {
                                 + " \nMessage Type :--- " + type);
                         stringBuffer.append("\n\n");
                         c.moveToNext();
-                    }
 
-                    Message msg= new Message(number, body, name, ""+dateFormat, type, date+"");
-                    msgRef.child(""+dateFormat).setValue(msg);
 
+                    Message msg = new Message(number, body, name, "" + dateFormat, type, date + "");
+                    msgRef.child("" + dateFormat).setValue(msg);
+                }
 
                 }
             } else {
