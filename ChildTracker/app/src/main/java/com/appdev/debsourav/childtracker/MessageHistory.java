@@ -19,14 +19,13 @@ import java.util.GregorianCalendar;
 public class MessageHistory extends AppCompatActivity {
 
     TextView txtMsgs;
-    static DatabaseReference msgRef;
+    static DatabaseReference msgRef= FirebaseDatabase.getInstance().getReference("Messages");;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_msg_history);
         txtMsgs= findViewById(R.id.txtMsgs);
-        msgRef = FirebaseDatabase.getInstance().getReference("Messages");
 
         //String messagelog = getAllSms(getApplicationContext());
         //txtMsgs.setText(messagelog);
