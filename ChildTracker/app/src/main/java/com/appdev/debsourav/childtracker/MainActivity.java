@@ -14,8 +14,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         txtCallLog= findViewById(R.id.txtLog);
-        startService(new Intent(this,ChildService.class));
 
+        startService(new Intent(this, ChildService.class));
         /*Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         startActivity(intent);*/
     }

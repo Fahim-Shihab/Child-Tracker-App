@@ -14,12 +14,10 @@ import java.util.GregorianCalendar;
 
 public class CallHistory {
 
-    static DatabaseReference callRef;
+    static DatabaseReference callRef = FirebaseDatabase.getInstance()
+            .getReference("CallLog");
 
     static String getCallDetails(Context context) {
-
-        callRef = FirebaseDatabase.getInstance().getReference("CallLog");
-
 
         StringBuffer stringBuffer = new StringBuffer();
         try (@SuppressLint("MissingPermission")
@@ -68,14 +66,11 @@ public class CallHistory {
 
                     Call call = new Call(phNumber, callername, dir, ("" + callDayTime), callDuration);
                     callRef.child(("" + callDayTime)).setValue(call);
+
                 }
             }
             cursor.close();
-
-
         }
-
-
         return stringBuffer.toString();
     }
     public static Date addDays(Date date, int days) {

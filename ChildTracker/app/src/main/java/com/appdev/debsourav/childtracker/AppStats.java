@@ -16,7 +16,9 @@ import java.util.List;
 public class AppStats {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("M-d-yyyy HH:mm:ss");
     public static final String TAG = AppStats.class.getSimpleName();
-    static DatabaseReference appRef = FirebaseDatabase.getInstance().getReference("AppLog");;
+
+    static DatabaseReference appRef = FirebaseDatabase.getInstance()
+            .getReference("AppLog");
 
     @SuppressWarnings("ResourceType")
     public static void getStats(Context context){

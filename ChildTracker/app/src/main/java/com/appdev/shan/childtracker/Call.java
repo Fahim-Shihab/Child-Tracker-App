@@ -1,8 +1,4 @@
-package com.appdev.debsourav.childtracker;
-
-/**
- * Created by Deb Sourav on 3/29/2018.
- */
+package com.appdev.shan.childtracker;
 
 public class Call {
     private String phNumber, caller, callType, callDate, callDuration;
@@ -10,9 +6,9 @@ public class Call {
     public Call() {
     }
 
-    public Call(String phNumber, String callername, String callType, String callDate, String callDuration) {
+    public Call(String phNumber,String caller, String callType, String callDate, String callDuration) {
         this.phNumber = phNumber;
-        this.caller = callername;
+        this.caller = caller;
         this.callType = callType;
         this.callDate = callDate;
         this.callDuration = callDuration;

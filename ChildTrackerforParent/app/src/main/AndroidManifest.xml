@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".MessageLog" />
         <activity android:name=".MessageBody" />
-        <activity android:name=".AppLog"></activity>
+        <activity android:name=".AppLog" />
+        <activity android:name=".CallLog"></activity>
     </application>
 
 </manifest>

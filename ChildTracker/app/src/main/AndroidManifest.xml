@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.appdev.debsourav.childtracker">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission
@@ -31,7 +32,10 @@
         <service
             android:name=".ChildService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+
+        <activity android:name="com.appdev.shan.childtracker.Main2Activity" />
+
     </application>
 
 </manifest>

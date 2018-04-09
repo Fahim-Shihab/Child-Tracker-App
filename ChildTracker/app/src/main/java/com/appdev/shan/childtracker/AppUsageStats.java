@@ -7,8 +7,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.appdev.debsourav.childtracker.AppStats;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.firebase.client.Firebase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -17,7 +16,6 @@ import java.util.List;
 public class AppUsageStats {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("M-d-yyyy HH:mm:ss");
     public static final String TAG = AppStats.class.getSimpleName();
-    static DatabaseReference appRef = FirebaseDatabase.getInstance().getReference("AppLog");;
 
     @SuppressWarnings("ResourceType")
     public static void getStats(Context context){
@@ -59,6 +57,8 @@ public class AppUsageStats {
 
     public static void printUsageStats(List<UsageStats> usageStatsList){
 
+        //Firebase mFire = new Firebase("https://trackphone-a6f55.firebaseio.com/AppLog");
+
         for (UsageStats u : usageStatsList){
 
             String packname;
@@ -76,10 +76,10 @@ public class AppUsageStats {
                 Log.d(TAG, "Pkg: " + u.getPackageName() + "\t" + "ForegroundTime: "
                         + u.getTotalTimeInForeground() / 1000);
 
-                appRef.child("Package: " + appname).
+                /*mFire.child("Package: " + appname).
                         setValue(" Time: " + (u.getTotalTimeInForeground() / (1000 * 60)) +
                                 " minutes " + (u.getTotalTimeInForeground() / 1000) % (60) + " seconds");
-            }
+           */ }
         }
     }
 

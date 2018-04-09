@@ -1,8 +1,4 @@
-package com.appdev.debsourav.childtracker;
-
-/**
- * Created by Deb Sourav on 4/2/2018.
- */
+package com.appdev.shan.childtracker;
 
 public class Message {
     String number, body, name, date, type, fullDate;
@@ -17,7 +13,6 @@ public class Message {
         this.date = date;
         this.type = type;
         this.fullDate = fullDate;
-
     }
 
     public String getNumber() {

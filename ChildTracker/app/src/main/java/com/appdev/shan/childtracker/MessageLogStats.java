@@ -1,46 +1,22 @@
-package com.appdev.debsourav.childtracker;
+package com.appdev.shan.childtracker;
 
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
-import android.os.Bundle;
 import android.provider.Telephony;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-public class MessageHistory extends AppCompatActivity {
-
-    TextView txtMsgs;
-
-    static DatabaseReference msgRef= FirebaseDatabase.getInstance()
-            .getReference("MessageLog");
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_msg_history);
-        txtMsgs= findViewById(R.id.txtMsgs);
-
-        //String messagelog = getAllSms(getApplicationContext());
-        //txtMsgs.setText(messagelog);
-
-    }
-
-    public static void getAllSms(Context context) {
+public class MessageLogStats {
+    public static String getAllSms(Context context) {
 
         StringBuffer stringBuffer = new StringBuffer();
         ContentResolver cr = context.getContentResolver();
         Cursor c = cr.query(Telephony.Sms.CONTENT_URI, null, null, null, null);
         int totalSMS = 0;
-
+        //Firebase mFire = new Firebase("https://trackphone-a6f55.firebaseio.com/MessageLog");
         if (c != null) {
             totalSMS = c.getCount();
             if (c.moveToFirst()) {
@@ -49,8 +25,7 @@ public class MessageHistory extends AppCompatActivity {
                     String number = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
                     String body = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.BODY));
                     String name = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.PERSON));
-                    Date date = new Date(Long.valueOf(smsDate));
-                    String dateFormat = new SimpleDateFormat("MM/dd/yyyy").format(date);
+                    Date dateFormat = new Date(Long.valueOf(smsDate));
                     String type = "";
                     Calendar today = Calendar.getInstance();
                     today.clear(Calendar.HOUR);
@@ -73,28 +48,57 @@ public class MessageHistory extends AppCompatActivity {
                             break;
                     }
 
-                    if (!(date.before(dateRange))) {
+                    if (!(dateFormat.before(dateRange))) {
+
+                        Message msg = new Message(number, body, name, "" + dateFormat, type, dateFormat + "");
+
+                       /* Firebase mFireChild = mFire.child(dateFormat.toString());
+                        mFireChild.setValue(msg);*/
+
                         stringBuffer.append("\nNumber:---" + number +
                                 " \nBody:--- "
                                 + body + "\nName:--- " + name + " \nDate:--- " + dateFormat
                                 + " \nMessage Type :--- " + type);
                         stringBuffer.append("\n\n");
+
+                       /* mFire.addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                String value = dataSnapshot.getValue(String.class);
+                                String key = dataSnapshot.getKey();
+                            }
+
+                            @Override
+                            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(FirebaseError firebaseError) {
+
+                            }
+                        });*/
                         c.moveToNext();
-
-
-                    Message msg = new Message(number, body, name, "" + dateFormat, type, date + "");
-                    msgRef.child("" + date).setValue(msg);
-
-                }
+                    }
 
                 }
             } else {
-                //Toast.makeText(MessageHistory.this, "No message to show!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "No message to show!", Toast.LENGTH_SHORT).show();
             }
 
         }
+        return stringBuffer.toString();
     }
-
     public static Date addDays(Date date, int days) {
         GregorianCalendar cal = new GregorianCalendar();
         cal.setTime(date);
