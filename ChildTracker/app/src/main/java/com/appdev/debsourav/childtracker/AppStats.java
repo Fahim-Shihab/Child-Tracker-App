@@ -29,8 +29,8 @@ public class AppStats {
         calendar.add(Calendar.YEAR, -1);
         long startTime = calendar.getTimeInMillis();
 
-        Log.d(TAG, "Range start:" + dateFormat.format(startTime) );
-        Log.d(TAG, "Range end:" + dateFormat.format(endTime));
+/*        Log.d(TAG, "Range start:" + dateFormat.format(startTime) );
+        Log.d(TAG, "Range end:" + dateFormat.format(endTime));*/
 
         UsageEvents uEvents = usm.queryEvents(startTime,endTime);
         while (uEvents.hasNextEvent()){
@@ -47,7 +47,10 @@ public class AppStats {
         UsageStatsManager usm = getUsageStatsManager(context);
         Calendar calendar = Calendar.getInstance();
         long endTime = calendar.getTimeInMillis();
-        calendar.add(Calendar.HOUR, -12);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        int back = (-1)*hour*60-minute;
+        calendar.add(Calendar.MINUTE, back);
         long startTime = calendar.getTimeInMillis();
 
         Log.d(TAG, "Range Start:" + dateFormat.format(startTime) );
@@ -74,8 +77,8 @@ public class AppStats {
 
             if((u.getTotalTimeInForeground()/1000)>0) {
 
-                Log.d(TAG, "Pkg: " + u.getPackageName() + "\t" + "ForegroundTime: "
-                        + u.getTotalTimeInForeground() / 1000);
+                /*Log.d(TAG, "Pkg: " + u.getPackageName() + "\t" + "ForegroundTime: "
+                        + u.getTotalTimeInForeground() / 1000);*/
 
                 appRef.child("Package: " + appname).
                         setValue(" Time: " + (u.getTotalTimeInForeground() / (1000 * 60)) +
