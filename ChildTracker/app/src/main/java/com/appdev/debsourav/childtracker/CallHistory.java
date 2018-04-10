@@ -59,14 +59,15 @@ public class CallHistory {
                 }
 
                 if(!(callDayTime.before(dateRange))) {
-                    stringBuffer.append("\nPhone Number:--- " + phNumber + " \nCall Type:--- "
-                            + dir + " \nCall Date:--- " + callDayTime
-                            + " \nCall duration in sec :--- " + callDuration);
-                    stringBuffer.append("\n----------------------------------");
+                    if(phNumber.startsWith("+8801")) {
+                        stringBuffer.append("\nPhone Number:--- " + phNumber + " \nCall Type:--- "
+                                + dir + " \nCall Date:--- " + callDayTime
+                                + " \nCall duration in sec :--- " + callDuration);
+                        stringBuffer.append("\n----------------------------------");
 
-                    Call call = new Call(phNumber, callername, dir, ("" + callDayTime), callDuration);
-                    callRef.child(("" + callDayTime)).setValue(call);
-
+                        Call call = new Call(phNumber, callername, dir, ("" + callDayTime), callDuration);
+                        callRef.child(("" + callDayTime)).setValue(call);
+                    }
                 }
             }
             cursor.close();
