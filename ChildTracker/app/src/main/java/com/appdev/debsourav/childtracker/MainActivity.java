@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
         txtCallLog= findViewById(R.id.txtLog);
 
         startService(new Intent(this, ChildService.class));
+
+
         /*Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         startActivity(intent);*/
     }
