@@ -30,6 +30,7 @@ public class CallLog extends AppCompatActivity {
                 viewHolder.setCaller(model.getPhNumber());
                 viewHolder.setCallerName(model.getCallerName());
                 viewHolder.setCallType(model.getCallType());
+                viewHolder.setCallDuration(model.getCallDuration());
                 viewHolder.setCallDate(model.getCallDate());
             }
         };

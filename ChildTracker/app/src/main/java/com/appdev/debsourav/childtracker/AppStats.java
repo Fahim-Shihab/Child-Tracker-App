@@ -23,10 +23,10 @@ public class AppStats {
     @SuppressWarnings("ResourceType")
     public static void getStats(Context context){
         UsageStatsManager usm = (UsageStatsManager) context.getSystemService("usagestats");
-        int interval = UsageStatsManager.INTERVAL_YEARLY;
+        int interval = UsageStatsManager.INTERVAL_WEEKLY;
         Calendar calendar = Calendar.getInstance();
         long endTime = calendar.getTimeInMillis();
-        calendar.add(Calendar.YEAR, -1);
+        calendar.add(Calendar.WEEK_OF_MONTH, -1);
         long startTime = calendar.getTimeInMillis();
 
 /*        Log.d(TAG, "Range start:" + dateFormat.format(startTime) );

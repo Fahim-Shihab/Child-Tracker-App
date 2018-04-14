@@ -32,6 +32,12 @@ public class CallViewHolder extends RecyclerView.ViewHolder {
         txtCallType.setText("Call type: "+callType);
     }
 
+    public void setCallDuration(String callDuration){
+        TextView txtCallDate= callView.findViewById(R.id.callDuration);
+        txtCallDate.setText("Call duration: "+callDuration);
+
+    }
+
     public void setCallDate(String callDate){
         TextView txtCallDate= callView.findViewById(R.id.callDate);
         txtCallDate.setText("Call date: "+callDate);
