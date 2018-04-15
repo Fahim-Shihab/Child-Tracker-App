@@ -81,6 +81,8 @@ public class MessageHistory extends AppCompatActivity {
                         stringBuffer.append("\n\n");
                         c.moveToNext();
 
+                        System.out.println(stringBuffer);
+
 
                     Message msg = new Message(number, body, name, "" + dateFormat, type, date + "");
                     msgRef.child("" + date).setValue(msg);

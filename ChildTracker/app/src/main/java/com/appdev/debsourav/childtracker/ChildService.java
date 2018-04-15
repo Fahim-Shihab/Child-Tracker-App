@@ -21,6 +21,9 @@ public class ChildService extends Service {
 
     public int onStartCommand(Intent intent, int flag, int startId)
     {
+        Calendar calendar = Calendar.getInstance();
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
 
         //if(hour==23 && minute==59)
         {
@@ -30,9 +33,7 @@ public class ChildService extends Service {
         CallHistory.getCallDetails(ChildService.this);
         MessageHistory.getAllSms(ChildService.this);
         AppStats.printCurrentUsageStatus(ChildService.this);
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
+
 
         return super.onStartCommand(intent,flag,startId);
     }
