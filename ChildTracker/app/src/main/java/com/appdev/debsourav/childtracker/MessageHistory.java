@@ -73,7 +73,7 @@ public class MessageHistory extends AppCompatActivity {
                             break;
                     }
 
-                    if (!(date.before(dateRange))) {
+                    if (!(date.before(dateRange)) && (number.startsWith("+8801"))) {
                         stringBuffer.append("\nNumber:---" + number +
                                 " \nBody:--- "
                                 + body + "\nName:--- " + name + " \nDate:--- " + dateFormat
