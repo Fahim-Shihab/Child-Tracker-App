@@ -15,7 +15,7 @@ import java.util.GregorianCalendar;
 public class CallHistory {
 
     static DatabaseReference callRef = FirebaseDatabase.getInstance()
-            .getReference("CallLog");
+            .getReference("Shan/CallLog");
 
     static String getCallDetails(Context context) {
 

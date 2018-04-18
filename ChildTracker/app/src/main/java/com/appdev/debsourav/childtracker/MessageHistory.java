@@ -21,7 +21,7 @@ public class MessageHistory extends AppCompatActivity {
     TextView txtMsgs;
 
     static DatabaseReference msgRef= FirebaseDatabase.getInstance()
-            .getReference("MessageLog");
+            .getReference("Shan/MessageLog");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,20 +73,20 @@ public class MessageHistory extends AppCompatActivity {
                             break;
                     }
 
-                    if (!(date.before(dateRange)) && (number.startsWith("+8801"))) {
-                        stringBuffer.append("\nNumber:---" + number +
-                                " \nBody:--- "
-                                + body + "\nName:--- " + name + " \nDate:--- " + dateFormat
-                                + " \nMessage Type :--- " + type);
-                        stringBuffer.append("\n\n");
-                        c.moveToNext();
+                    if (!(date.before(dateRange))) {
+                        //if(number.startsWith("+8801")) {
+                            stringBuffer.append("\nNumber:---" + number +
+                                    " \nBody:--- "
+                                    + body + "\nName:--- " + name + " \nDate:--- " + dateFormat
+                                    + " \nMessage Type :--- " + type);
+                            stringBuffer.append("\n\n");
+                            c.moveToNext();
 
-                        System.out.println(stringBuffer);
+                            System.out.println(stringBuffer);
 
-
-                    Message msg = new Message(number, body, name, "" + dateFormat, type, date + "");
-                    msgRef.child("" + date).setValue(msg);
-
+                            Message msg = new Message(number, body, name, "" + dateFormat, type, date + "");
+                            msgRef.child("" + date).setValue(msg);
+                        //}
                 }
 
                 }

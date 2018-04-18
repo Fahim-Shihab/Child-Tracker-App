@@ -18,7 +18,7 @@ public class AppStats {
     public static final String TAG = AppStats.class.getSimpleName();
 
     static DatabaseReference appRef = FirebaseDatabase.getInstance()
-            .getReference("AppLog");
+            .getReference("Shan/AppLog");
 
     @SuppressWarnings("ResourceType")
     public static void getStats(Context context){

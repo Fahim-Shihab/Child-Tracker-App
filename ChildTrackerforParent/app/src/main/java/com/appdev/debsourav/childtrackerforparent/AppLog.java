@@ -25,7 +25,7 @@ public class AppLog extends AppCompatActivity {
 
         applist = findViewById(R.id.AppLogList);
 
-        appRef= FirebaseDatabase.getInstance().getReference("AppLog");
+        appRef= FirebaseDatabase.getInstance().getReference("Shan/AppLog");
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,Applog);
 
