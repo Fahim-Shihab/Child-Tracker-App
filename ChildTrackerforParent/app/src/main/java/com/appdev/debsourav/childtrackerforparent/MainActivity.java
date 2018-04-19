@@ -9,7 +9,7 @@ import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageButton btnMsgLog, Applog, btnCallLog;
+    ImageButton btnMsgLog, Applog, btnCallLog, btnWeekly, btnGPS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnWeekly = findViewById(R.id.btnAppWeekly);
 
+        btnGPS = findViewById(R.id.btnGPS);
 
     }
 }

@@ -1,35 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginStart="100dp"
-    android:layout_marginTop="80dp"
+    android:layout_marginLeft="50dp"
+    android:layout_marginStart="50dp"
+    android:layout_marginTop="50dp"
     tools:context="com.appdev.debsourav.childtrackerforparent.MainActivity"
     android:orientation="vertical">
 
     <ImageButton
         android:id="@+id/btnMsg"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:background="@drawable/phonemessage"
-
         />
-    <ImageButton
-        android:id="@+id/btnApp"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/appuse"
-        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/msgText"
+        android:layout_below="@+id/btnMsg"
+        android:text="Message Log"
+        android:textSize="16sp"/>
 
     <ImageButton
         android:id="@+id/btnCall"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_below="@+id/btnMsg"
+        android:layout_marginTop="70dp"
         android:background="@drawable/phonecall"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/msgCall"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_below="@+id/btnCall"
+        android:text="  Call Log"
+        android:textSize="16sp"/>
 
-</LinearLayout>
+    <ImageButton
+        android:id="@+id/btnApp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_toRightOf="@+id/msgText"
+        android:layout_marginLeft="70dp"
+        android:background="@drawable/appuse"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/msgApp"
+        android:layout_below="@+id/btnApp"
+        android:text="  App Log"
+        android:layout_toRightOf="@+id/msgText"
+        android:layout_marginLeft="70dp"
+        android:textSize="16sp"/>
+
+    <ImageButton
+        android:id="@+id/btnGPS"
+        android:background="@drawable/map"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/btnApp"
+        android:layout_marginTop="70dp"
+        android:layout_toRightOf="@+id/btnCall"
+        android:layout_marginLeft="70dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnGPS"
+        android:text="  Location Log"
+        android:layout_toRightOf="@+id/msgCall"
+        android:layout_marginLeft="70dp"
+        android:textSize="16sp"/>
+
+    <ImageButton
+        android:id="@+id/btnAppWeekly"
+        android:background="@drawable/weeklystat"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/btnCall"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="80dp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnAppWeekly"
+        android:text="  Weekly App
+  Usage Stats"
+        android:layout_toRightOf="@+id/msgCall"
+        android:textSize="16sp"/>
+
+</RelativeLayout>
