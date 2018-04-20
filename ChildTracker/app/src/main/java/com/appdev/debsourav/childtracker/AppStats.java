@@ -11,6 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class AppStats {
@@ -95,9 +96,16 @@ public class AppStats {
 
                 /*Log.d(TAG, "Pkg: " + u.getPackageName() + "\t" + "ForegroundTime: "
                         + u.getTotalTimeInForeground() / 1000);*/
+                Date LastUse = new Date(Long.valueOf(u.getLastTimeUsed()));
+
+                long time = u.getTotalTimeInForeground()/1000;
+
+                String TimeForeground = (time/60)+" minutes "+(time%60)+" seconds";
+
+                App appinfo = new App(appname,TimeForeground,""+LastUse);
 
                 appRef.child("" + appname).
-                        setValue(u.getTotalTimeInForeground()/1000);
+                        setValue(appinfo);
             }
         }
     }
