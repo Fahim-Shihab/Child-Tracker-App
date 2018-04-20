@@ -20,6 +20,9 @@ public class AppStats {
     static DatabaseReference appRef = FirebaseDatabase.getInstance()
             .getReference("Shan/AppLog");
 
+    static DatabaseReference WeeklyRef = FirebaseDatabase.getInstance()
+            .getReference("Shan/WeeklyLog");
+
     @SuppressWarnings("ResourceType")
     public static void getStats(Context context){
         UsageStatsManager usm = (UsageStatsManager) context.getSystemService("usagestats");
@@ -61,6 +64,21 @@ public class AppStats {
         return usageStatsList;
     }
 
+    public static List<UsageStats> getWeeklyUsageStatsList(Context context){
+        UsageStatsManager usm = getUsageStatsManager(context);
+        Calendar calendar = Calendar.getInstance();
+        long endTime = calendar.getTimeInMillis();
+        calendar.add(Calendar.DAY_OF_WEEK, -7);
+        long startTime = calendar.getTimeInMillis();
+
+        Log.d(TAG, "Range Start for Weekly: " + dateFormat.format(startTime) );
+        Log.d(TAG, "Range End for Weekly: " + dateFormat.format(endTime));
+
+        List<UsageStats> usageStatsList = usm.queryUsageStats(UsageStatsManager.INTERVAL_WEEKLY,
+                startTime,endTime);
+        return usageStatsList;
+    }
+
     public static void printUsageStats(List<UsageStats> usageStatsList){
 
         for (UsageStats u : usageStatsList){
@@ -73,22 +91,43 @@ public class AppStats {
 
             if(appname.startsWith("org ")) appname = appname.replace("org ","");
 
-            System.out.println("Appname: "+appname);
+            if((u.getTotalTimeInForeground()/1000)>0) {
+
+                /*Log.d(TAG, "Pkg: " + u.getPackageName() + "\t" + "ForegroundTime: "
+                        + u.getTotalTimeInForeground() / 1000);*/
+
+                appRef.child("" + appname).
+                        setValue(u.getTotalTimeInForeground()/1000);
+            }
+        }
+    }
+
+    public static void printWeeklyUsageStats(List<UsageStats> usageStatsList){
+
+        for (UsageStats u : usageStatsList){
+
+            String packname;
+            packname = u.getPackageName();
+            String appname = packname.replaceAll("\\."," ");
+
+            if(appname.startsWith("com ")) appname = appname.replace("com ","");
+
+            if(appname.startsWith("org ")) appname = appname.replace("org ","");
 
             if((u.getTotalTimeInForeground()/1000)>0) {
 
                 /*Log.d(TAG, "Pkg: " + u.getPackageName() + "\t" + "ForegroundTime: "
                         + u.getTotalTimeInForeground() / 1000);*/
 
-                appRef.child("Package: " + appname).
-                        setValue(" Time: " + (u.getTotalTimeInForeground() / (1000 * 60)) +
-                        " minutes " + (u.getTotalTimeInForeground() / 1000) % (60) + " seconds");
+                WeeklyRef.child("" + appname).
+                        setValue(u.getTotalTimeInForeground()/1000);
             }
         }
     }
 
     public static void printCurrentUsageStatus(Context context){
         printUsageStats(getUsageStatsList(context));
+        printWeeklyUsageStats(getWeeklyUsageStatsList(context));
     }
     @SuppressWarnings("ResourceType")
     private static UsageStatsManager getUsageStatsManager(Context context){

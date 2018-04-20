@@ -34,10 +34,18 @@ public class AppLog extends AppCompatActivity {
         appRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                String value = dataSnapshot.getValue(String.class);
+                int val = dataSnapshot.getValue(Integer.class);
                 String key = dataSnapshot.getKey();
 
-                Applog.add(key+"\n"+value);
+                int hours = val/3600;
+                int minutes = val/60;
+                int seconds = val%60;
+
+                String appname = "App Name: "+key;
+                String duration = "\nRun Time: "+hours+" hours "+minutes+" minutes "+seconds+" seconds";
+
+                //System.out.println(appname+duration);
+                Applog.add(appname+duration);
                 arrayAdapter.notifyDataSetChanged();
             }
 
