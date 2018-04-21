@@ -95,11 +95,18 @@
         android:layout_marginLeft="80dp"
         />
     <TextView
+        android:id="@+id/Week"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnAppWeekly"
-        android:text="  Weekly App
-  Usage Stats"
+        android:text="  Weekly App"
+        android:layout_toRightOf="@+id/msgCall"
+        android:textSize="16sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Week"
+        android:text="  Usage Stats"
         android:layout_toRightOf="@+id/msgCall"
         android:textSize="16sp"/>
 

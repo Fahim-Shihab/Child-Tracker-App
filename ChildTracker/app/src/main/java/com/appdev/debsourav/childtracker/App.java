@@ -1,10 +1,6 @@
 package com.appdev.debsourav.childtracker;
 
-import java.text.SimpleDateFormat;
-
 public class App {
-
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("M-d-yyyy HH:mm:ss");
 
     private String AppName;
     private String Duration;

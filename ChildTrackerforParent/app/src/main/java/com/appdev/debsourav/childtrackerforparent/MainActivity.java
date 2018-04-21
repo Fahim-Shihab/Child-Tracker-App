@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String duration = "\nRun Time: "+hours+" hours "+minutes+" minutes "+seconds+" seconds";
                 System.out.println(appname+minutes);
-                if(minutes>2) data.add(new ValueDataEntry(key,minutes));
+                if(minutes>5) data.add(new ValueDataEntry(key,minutes));
             }
 
             @Override
