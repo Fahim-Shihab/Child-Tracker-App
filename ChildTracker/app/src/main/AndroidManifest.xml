@@ -40,9 +40,9 @@
         <receiver
             android:name=".MyReceiver"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            />
 
-        <activity android:name=".Clock" />
         <activity android:name=".Alarm" />
         <activity android:name=".Calculator"></activity>
     </application>
