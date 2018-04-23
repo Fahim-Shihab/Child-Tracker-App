@@ -3,10 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.appdev.debsourav.childtracker">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_SMS" />
-    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE"
+    <uses-permission
+        android:name="android.permission.MODIFY_PHONE_STATE"
         tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -22,9 +28,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".MessageHistory"></activity>
         <activity android:name=".CreateAccount"></activity>
         <activity android:name=".MainActivity"></activity>
+=======
+        <activity android:name=".MessageHistory" />
+
+        <service
+            android:name=".ChildService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name="com.appdev.shan.childtracker.Main2Activity" />
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true"
+            />
+
+        <activity android:name=".Alarm" />
+        <activity android:name=".Calculator"></activity>
+>>>>>>> 7398de2f23a4cab55d749ace029e221c6374944c
     </application>
 
 </manifest>

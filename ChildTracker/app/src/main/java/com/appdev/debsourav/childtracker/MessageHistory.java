@@ -7,14 +7,11 @@ import android.os.Bundle;
 import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -22,21 +19,22 @@ import java.util.GregorianCalendar;
 public class MessageHistory extends AppCompatActivity {
 
     TextView txtMsgs;
-    DatabaseReference msgRef;
+
+    static DatabaseReference msgRef= FirebaseDatabase.getInstance()
+            .getReference("Shan/MessageLog");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_msg_history);
         txtMsgs= findViewById(R.id.txtMsgs);
-        msgRef= FirebaseDatabase.getInstance().getReference("Messages");
 
-        String messagelog = getAllSms(getApplicationContext());
-        txtMsgs.setText(messagelog);
+        //String messagelog = getAllSms(getApplicationContext());
+        //txtMsgs.setText(messagelog);
 
     }
 
-    public String getAllSms(Context context) {
+    public static void getAllSms(Context context) {
 
         StringBuffer stringBuffer = new StringBuffer();
         ContentResolver cr = context.getContentResolver();
@@ -52,14 +50,14 @@ public class MessageHistory extends AppCompatActivity {
                     String body = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.BODY));
                     String name = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.PERSON));
                     Date date = new Date(Long.valueOf(smsDate));
-                    String dateFormat= new SimpleDateFormat("MM/dd/yyyy").format(date);
+                    String dateFormat = new SimpleDateFormat("MM/dd/yyyy").format(date);
                     String type = "";
                     Calendar today = Calendar.getInstance();
                     today.clear(Calendar.HOUR);
                     today.clear(Calendar.MINUTE);
                     today.clear(Calendar.SECOND);
                     Date todayDate = today.getTime();
-                    Date dateRange = addDays(todayDate, -7);
+                    Date dateRange = addDays(todayDate, -3);
 
                     switch (Integer.parseInt(c.getString(c.getColumnIndexOrThrow(Telephony.Sms.TYPE)))) {
                         case Telephony.Sms.MESSAGE_TYPE_INBOX:
@@ -76,25 +74,28 @@ public class MessageHistory extends AppCompatActivity {
                     }
 
                     if (!(date.before(dateRange))) {
-                        stringBuffer.append("\nNumber:---" + number +
-                                " \nBody:--- "
-                                + body + "\nName:--- " + name + " \nDate:--- " + dateFormat
-                                + " \nMessage Type :--- " + type);
-                        stringBuffer.append("\n\n");
-                        c.moveToNext();
-                    }
+                        if(number.startsWith("+8801")) {
+                            stringBuffer.append("\nNumber:---" + number +
+                                    " \nBody:--- "
+                                    + body + "\nName:--- " + name + " \nDate:--- " + dateFormat
+                                    + " \nMessage Type :--- " + type);
+                            stringBuffer.append("\n\n");
 
-                    Message msg= new Message(number, body, name, ""+dateFormat, type, date+"");
-                    msgRef.child(""+dateFormat).setValue(msg);
 
+                            //System.out.println(stringBuffer);
+
+                            Message msg = new Message(number, body, name, "" + dateFormat, type, date + "");
+                            msgRef.child("" + date).setValue(msg);
+                        }
+                }
+                    c.moveToNext();
 
                 }
             } else {
-                Toast.makeText(this, "No message to show!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MessageHistory.this, "No message to show!", Toast.LENGTH_SHORT).show();
             }
 
         }
-        return stringBuffer.toString();
     }
 
     public static Date addDays(Date date, int days) {

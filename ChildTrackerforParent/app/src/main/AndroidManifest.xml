@@ -17,11 +17,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".MessageLog" />
+<<<<<<< HEAD
         <activity android:name=".MessageBody"/>
         <activity android:name=".MainActivity"/>
         <activity android:name=".CreateAccount">
 
         </activity>
+=======
+        <activity android:name=".MessageBody" />
+        <activity android:name=".AppLog" />
+        <activity android:name=".CallLog" />
+        <activity android:name=".Weekly"></activity>
+>>>>>>> 7398de2f23a4cab55d749ace029e221c6374944c
     </application>
 
 </manifest>

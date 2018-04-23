@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back2"
+    tools:context=".Alarm">
+    
+    <TimePicker
+        android:layout_marginTop="25dp"
+        android:headerBackground="#0000"
+        android:numbersSelectorColor="#000"
+        android:numbersTextColor="#612c2c"
+        android:id="@+id/TimePicker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/StopMusic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop"
+            android:textColor="#fefefe"
+            android:background="#786a6a"
+            android:textAllCaps="false"
+            />
+
+    </TimePicker>
+
+    <Button
+        android:id="@+id/alarmClockButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#000"
+        android:text="Set Alarm"
+        android:textColor="#fefefe"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"
+        android:layout_below="@id/TimePicker"/>
+
+</RelativeLayout>

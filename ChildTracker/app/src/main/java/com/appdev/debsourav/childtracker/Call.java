@@ -5,13 +5,14 @@ package com.appdev.debsourav.childtracker;
  */
 
 public class Call {
-    private String phNumber, callType, callDate, callDuration;
+    private String phNumber, caller, callType, callDate, callDuration;
 
     public Call() {
     }
 
-    public Call(String phNumber, String callType, String callDate, String callDuration) {
+    public Call(String phNumber, String callername, String callType, String callDate, String callDuration) {
         this.phNumber = phNumber;
+        this.caller = callername;
         this.callType = callType;
         this.callDate = callDate;
         this.callDuration = callDuration;
@@ -23,6 +24,14 @@ public class Call {
 
     public void setPhNumber(String phNumber) {
         this.phNumber = phNumber;
+    }
+
+    public String getCallerName() {
+        return caller;
+    }
+
+    public void setCallerName(String caller) {
+        this.caller = caller;
     }
 
     public String getCallType() {

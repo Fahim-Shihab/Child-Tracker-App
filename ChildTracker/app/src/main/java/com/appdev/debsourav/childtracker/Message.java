@@ -17,6 +17,7 @@ public class Message {
         this.date = date;
         this.type = type;
         this.fullDate = fullDate;
+
     }
 
     public String getNumber() {

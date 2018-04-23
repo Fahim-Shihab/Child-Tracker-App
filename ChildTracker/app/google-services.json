@@ -1,9 +1,16 @@
 {
   "project_info": {
+<<<<<<< HEAD
     "project_number": "718982383237",
     "firebase_url": "https://trackphone-a6f55.firebaseio.com",
     "project_id": "trackphone-a6f55",
     "storage_bucket": "trackphone-a6f55.appspot.com"
+=======
+    "project_number": "74983096189",
+    "firebase_url": "https://trackphone-a6f55.firebaseio.com/",
+    "project_id": "childtracker-14a9f",
+    "storage_bucket": "childtracker-14a9f.appspot.com"
+>>>>>>> 7398de2f23a4cab55d749ace029e221c6374944c
   },
   "client": [
     {

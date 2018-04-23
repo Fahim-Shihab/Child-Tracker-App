@@ -1,29 +1,27 @@
 package com.appdev.debsourav.childtracker;
 
-import android.annotation.SuppressLint;
-import android.content.ContentResolver;
-import android.content.Context;
-import android.database.Cursor;
-import android.provider.CallLog;
-import android.provider.Telephony;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageButton;
 
+<<<<<<< HEAD
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+=======
+public class MainActivity extends AppCompatActivity {
+>>>>>>> 7398de2f23a4cab55d749ace029e221c6374944c
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 
+<<<<<<< HEAD
 public class MainActivity extends AppCompatActivity {
     TextView txtCallLog;
     static DatabaseReference callRef, msgRef, mRef;
     FirebaseAuth auth;
+=======
+>>>>>>> 7398de2f23a4cab55d749ace029e221c6374944c
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         auth= FirebaseAuth.getInstance();
 
+<<<<<<< HEAD
         txtCallLog= findViewById(R.id.txtLog);
         mRef= FirebaseDatabase.getInstance().getReference().child("Childs").child(auth.getCurrentUser().getUid()+"");
         callRef= FirebaseDatabase.getInstance().getReference("Calls");
@@ -75,85 +74,32 @@ public class MainActivity extends AppCompatActivity {
                         + dir + " \nCall Date:--- " + callDayTime
                         + " \nCall duration in sec :--- " + callDuration);
                 stringBuffer.append("\n----------------------------------");
-
-                Call call= new Call(phNumber, dir, (""+callDayTime), callDuration);
-                callRef.child((""+callDayTime)).setValue(call);
-            }
-            cursor.close();
+=======
+//        startService(new Intent(this, ChildService.class));
+>>>>>>> 7398de2f23a4cab55d749ace029e221c6374944c
 
 
-        }
+        ImageButton buttonAlarm = findViewById(R.id.alarmSet);
 
+        buttonAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        return stringBuffer.toString();
-    }
+                Intent intent = new Intent(MainActivity.this,Alarm.class);
+                startActivity(intent);
+            }});
 
-    public String getAllSms(Context context) {
+        ImageButton buttonCalculator = findViewById(R.id.CalculatorSet);
 
-        StringBuffer stringBuffer = new StringBuffer();
-        ContentResolver cr = context.getContentResolver();
-        Cursor c = cr.query(Telephony.Sms.CONTENT_URI, null, null, null, null);
-        int totalSMS = 0;
+        buttonCalculator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        if (c != null) {
-            totalSMS = c.getCount();
-            if (c.moveToFirst()) {
-                for (int j = 0; j < totalSMS; j++) {
-                    String smsDate = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.DATE));
-                    String number = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
-                    String body = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.BODY));
-                    String name = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.PERSON));
-                    Date date = new Date(Long.valueOf(smsDate));
-                    String dateFormat= new SimpleDateFormat("MM/dd").format(date);
-                    String type = "";
-                    Calendar today = Calendar.getInstance();
-                    today.clear(Calendar.HOUR);
-                    today.clear(Calendar.MINUTE);
-                    today.clear(Calendar.SECOND);
-                    Date todayDate = today.getTime();
-                    Date dateRange = addDays(todayDate, -7);
+                Intent intent = new Intent(MainActivity.this,Calculator.class);
+                startActivity(intent);
+            }});
 
-                    switch (Integer.parseInt(c.getString(c.getColumnIndexOrThrow(Telephony.Sms.TYPE)))) {
-                        case Telephony.Sms.MESSAGE_TYPE_INBOX:
-                            type = "inbox";
-                            break;
-                        case Telephony.Sms.MESSAGE_TYPE_SENT:
-                            type = "sent";
-                            break;
-                        case Telephony.Sms.MESSAGE_TYPE_OUTBOX:
-                            type = "outbox";
-                            break;
-                        default:
-                            break;
-                    }
-
-                    if (!(date.before(dateRange))) {
-                        stringBuffer.append("\nNumber:---" + number +
-                                " \nBody:--- "
-                                + body + "\nName:--- " + name + " \nDate:--- " + date
-                                + " \nMessage Type :--- " + type);
-                        stringBuffer.append("\n\n");
-                        c.moveToNext();
-                    }
-
-                    Message msg= new Message(number, body, name, dateFormat, type, date+"");
-                    msgRef.child(""+date).setValue(msg);
-
-
-                }
-            } else {
-                Toast.makeText(this, "No message to show!", Toast.LENGTH_SHORT).show();
-            }
-
-        }
-        return stringBuffer.toString();
-    }
-
-    public static Date addDays(Date date, int days) {
-        GregorianCalendar cal = new GregorianCalendar();
-        cal.setTime(date);
-        cal.add(Calendar.DATE, days);
-
-        return cal.getTime();
+        /*Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        startActivity(intent);*/
     }
 }

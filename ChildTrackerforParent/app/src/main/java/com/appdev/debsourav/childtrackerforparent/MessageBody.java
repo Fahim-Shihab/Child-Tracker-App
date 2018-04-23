@@ -1,10 +1,8 @@
 package com.appdev.debsourav.childtrackerforparent;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class MessageBody extends AppCompatActivity {
 
@@ -25,7 +23,7 @@ public class MessageBody extends AppCompatActivity {
         txtType= findViewById(R.id.detType);
 
         txtNumber.setText(msg.getNumber());
-        txtType.setText("From: "+msg.getType());
+        txtType.setText("Type: "+msg.getType());
         txtDate.setText(msg.getFullDate());
         txtBody.setText(msg.getBody());
 
