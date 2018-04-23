@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -21,14 +22,17 @@ import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
     TextView txtCallLog;
-    static DatabaseReference callRef, msgRef;
+    static DatabaseReference callRef, msgRef, mRef;
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        auth= FirebaseAuth.getInstance();
 
         txtCallLog= findViewById(R.id.txtLog);
+        mRef= FirebaseDatabase.getInstance().getReference().child("Childs").child(auth.getCurrentUser().getUid()+"");
         callRef= FirebaseDatabase.getInstance().getReference("Calls");
         msgRef= FirebaseDatabase.getInstance().getReference("Messages");
 
