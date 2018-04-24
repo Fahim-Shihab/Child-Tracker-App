@@ -38,4 +38,15 @@ dependencies {
     compile 'com.google.firebase:firebase-core:12.0.0'
 }
 
+<<<<<<< HEAD
+
+
+
+
+
+
+
 apply plugin: 'com.google.gms.google-services'
+=======
+apply plugin: 'com.google.gms.google-services'
+>>>>>>> 7398de2f23a4cab55d749ace029e221c6374944c

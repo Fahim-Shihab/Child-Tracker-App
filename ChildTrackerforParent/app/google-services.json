@@ -1,21 +1,28 @@
 {
   "project_info": {
+<<<<<<< HEAD
+    "project_number": "718982383237",
+    "firebase_url": "https://trackphone-a6f55.firebaseio.com",
+    "project_id": "trackphone-a6f55",
+    "storage_bucket": "trackphone-a6f55.appspot.com"
+=======
     "project_number": "74983096189",
     "firebase_url": "https://trackphone-a6f55.firebaseio.com/",
     "project_id": "childtracker-14a9f",
     "storage_bucket": "childtracker-14a9f.appspot.com"
+>>>>>>> 7398de2f23a4cab55d749ace029e221c6374944c
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:74983096189:android:bcf5ff9e5177246e",
+        "mobilesdk_app_id": "1:718982383237:android:bcf5ff9e5177246e",
         "android_client_info": {
           "package_name": "com.appdev.debsourav.childtracker"
         }
       },
       "oauth_client": [
         {
-          "client_id": "74983096189-ervn4msbjkk6edglrhqevhcg441evd42.apps.googleusercontent.com",
+          "client_id": "718982383237-hfci2nc2iukdng4r0g3klm2d9cob35pb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.appdev.debsourav.childtracker",
@@ -23,13 +30,13 @@
           }
         },
         {
-          "client_id": "74983096189-b94291glt2n0hbtbn7qj86h5mahf1ts2.apps.googleusercontent.com",
+          "client_id": "718982383237-tmkb6ml9ceqiubg6no70n9c7atj8tpv7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDyy12CPM-MYq9oap1ZbLeVwXzmt9l-BaQ"
+          "current_key": "AIzaSyBdIVBUFM68AVvRSnsclU959UnQP-PrTd4"
         }
       ],
       "services": {
@@ -40,7 +47,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "74983096189-b94291glt2n0hbtbn7qj86h5mahf1ts2.apps.googleusercontent.com",
+              "client_id": "718982383237-tmkb6ml9ceqiubg6no70n9c7atj8tpv7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -52,14 +59,14 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:74983096189:android:4f2c12f9a8529640",
+        "mobilesdk_app_id": "1:718982383237:android:4f2c12f9a8529640",
         "android_client_info": {
           "package_name": "com.appdev.debsourav.childtrackerforparent"
         }
       },
       "oauth_client": [
         {
-          "client_id": "74983096189-7sekja60jlihuj2447s52adpftf52rbp.apps.googleusercontent.com",
+          "client_id": "718982383237-7pp39vfrloaut20h3vbdlbi0kt7pj0b9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.appdev.debsourav.childtrackerforparent",
@@ -67,13 +74,13 @@
           }
         },
         {
-          "client_id": "74983096189-b94291glt2n0hbtbn7qj86h5mahf1ts2.apps.googleusercontent.com",
+          "client_id": "718982383237-tmkb6ml9ceqiubg6no70n9c7atj8tpv7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDyy12CPM-MYq9oap1ZbLeVwXzmt9l-BaQ"
+          "current_key": "AIzaSyBdIVBUFM68AVvRSnsclU959UnQP-PrTd4"
         }
       ],
       "services": {
@@ -84,7 +91,7 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "74983096189-b94291glt2n0hbtbn7qj86h5mahf1ts2.apps.googleusercontent.com",
+              "client_id": "718982383237-tmkb6ml9ceqiubg6no70n9c7atj8tpv7.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -96,28 +103,20 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:74983096189:android:d36793aefd80da0f",
+        "mobilesdk_app_id": "1:718982383237:android:6157eb41bb231be4",
         "android_client_info": {
-          "package_name": "com.example.deb.childtracker"
+          "package_name": "com.appdev.shan.childtracker"
         }
       },
       "oauth_client": [
         {
-          "client_id": "74983096189-va5o1igqbfs2ppq70pqmnit5f8ovkdmr.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.deb.childtracker",
-            "certificate_hash": "32e4d80cfd0b969c7af075a44398c17c12f53bde"
-          }
-        },
-        {
-          "client_id": "74983096189-b94291glt2n0hbtbn7qj86h5mahf1ts2.apps.googleusercontent.com",
+          "client_id": "718982383237-tmkb6ml9ceqiubg6no70n9c7atj8tpv7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDyy12CPM-MYq9oap1ZbLeVwXzmt9l-BaQ"
+          "current_key": "AIzaSyBdIVBUFM68AVvRSnsclU959UnQP-PrTd4"
         }
       ],
       "services": {
@@ -125,13 +124,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "74983096189-b94291glt2n0hbtbn7qj86h5mahf1ts2.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
