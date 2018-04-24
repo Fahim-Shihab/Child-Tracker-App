@@ -28,12 +28,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
+
         <activity android:name=".MessageHistory"></activity>
         <activity android:name=".CreateAccount"></activity>
         <activity android:name=".MainActivity"></activity>
-=======
-        <activity android:name=".MessageHistory" />
+
 
         <service
             android:name=".ChildService"
@@ -50,7 +49,6 @@
 
         <activity android:name=".Alarm" />
         <activity android:name=".Calculator"></activity>
->>>>>>> 7398de2f23a4cab55d749ace029e221c6374944c
     </application>
 
 </manifest>
