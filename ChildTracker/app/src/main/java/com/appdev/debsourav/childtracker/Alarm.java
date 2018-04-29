@@ -26,17 +26,8 @@ public class Alarm extends AppCompatActivity {
 
         buttonClock = findViewById(R.id.alarmClockButton);
         TimePick = findViewById(R.id.TimePicker);
-        Button StopMusic = findViewById(R.id.StopMusic);
 
-        StopMusic.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View v) {
-                                             MyReceiver.mp.stop();
-                                         }
-                                     });
-
-
-                buttonClock.setOnClickListener(new View.OnClickListener() {
+        buttonClock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar calendar = Calendar.getInstance();
@@ -62,14 +53,10 @@ public class Alarm extends AppCompatActivity {
         AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         Intent i = new Intent(this, MyReceiver.class);
-        Intent intent = new Intent(this,ChildService.class);
 
         PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
 
-        PendingIntent pir = PendingIntent.getBroadcast(this, 0, intent, 0);
-
         //setting the repeating alarm that will be fired every day
-        am.setRepeating(AlarmManager.RTC, time,180000, pi);
-        //am.setRepeating(AlarmManager.RTC, time,180000, pir);
+        am.setRepeating(AlarmManager.RTC, time,AlarmManager.INTERVAL_HOUR, pi);
     }
 }

