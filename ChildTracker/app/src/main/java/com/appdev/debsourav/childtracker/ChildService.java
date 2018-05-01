@@ -5,9 +5,6 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.widget.Toast;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.Calendar;
 
 public class ChildService extends Service {
@@ -28,8 +25,7 @@ public class ChildService extends Service {
 
         //if(hour==23 && minute==59)
 
-            DatabaseReference root = FirebaseDatabase.getInstance().getReference();
-            root.setValue(null);
+
         /*    MessageHistory.getAllSms(ChildService.this);
             CallHistory.getCallDetails(ChildService.this);
             AppStats.printCurrentUsageStatus(ChildService.this);
