@@ -9,6 +9,8 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
+
 public class CallLog extends AppCompatActivity {
 
     DatabaseReference mRef;
@@ -19,7 +21,7 @@ public class CallLog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call_log);
 
-        mRef= FirebaseDatabase.getInstance().getReference("Shan/CallLog");
+        mRef= FirebaseDatabase.getInstance().getReference().child(childID).child("CallLog");
         recyclerView= findViewById(R.id.rView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

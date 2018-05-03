@@ -34,7 +34,7 @@ public class CreateAccount extends AppCompatActivity {
         auth= FirebaseAuth.getInstance();
         auth2= FirebaseAuth.getInstance();
 
-        mRef= FirebaseDatabase.getInstance().getReference().child("Users");
+        mRef= FirebaseDatabase.getInstance().getReference().child("Parents");
 
         emailField= (EditText) findViewById(R.id.newEmail);
         passField= (EditText) findViewById(R.id.newPass);
@@ -59,11 +59,18 @@ public class CreateAccount extends AppCompatActivity {
 
     }
 
+    String getUserID(String email){
+        String str[]= email.split("@");
+        return str[0];
+    }
+
     void createAccount(){
 
         final String newEmail= emailField.getText().toString();
         String newPass= passField.getText().toString();
         String confirmPass= confirmPassField.getText().toString();
+
+
 
         if(newEmail.equals("")||newPass.equals("")||confirmPass.equals("")){
             Toast.makeText(getApplicationContext(),"Enter Email ID and Password!",Toast.LENGTH_LONG).show();
@@ -80,6 +87,10 @@ public class CreateAccount extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
+
+                        String userID= getUserID(auth.getCurrentUser().getEmail());
+                        mRef.child(userID).setValue("");
+
                         Toast.makeText(CreateAccount.this,"Account created succssfully!",Toast.LENGTH_LONG).show();
                         try {
                             Thread.sleep(200);

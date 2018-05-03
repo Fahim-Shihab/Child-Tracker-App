@@ -8,6 +8,7 @@ import android.provider.Telephony;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -20,8 +21,12 @@ public class MessageHistory extends AppCompatActivity {
 
     TextView txtMsgs;
 
-    static DatabaseReference msgRef= FirebaseDatabase.getInstance()
-            .getReference("Shan/MessageLog");
+    static DatabaseReference msgRef;
+
+    static String getUserID(String email){
+        String str[]= email.split("@");
+        return str[0];
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,8 @@ public class MessageHistory extends AppCompatActivity {
         setContentView(R.layout.activity_msg_history);
         txtMsgs= findViewById(R.id.txtMsgs);
 
+        String childID= getUserID(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        msgRef= FirebaseDatabase.getInstance().getReference().child(childID).child("MessageLog");
         //String messagelog = getAllSms(getApplicationContext());
         //txtMsgs.setText(messagelog);
 

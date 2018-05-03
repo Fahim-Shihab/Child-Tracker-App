@@ -40,6 +40,17 @@
 
 
         />
+
+    <EditText
+        android:id="@+id/parentEmail"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:textColor="#000"
+        android:textColorHint="#605d5d"
+        android:hint="Parents Email (Has to be registered)"
+
+        />
     <Button
 
         android:id="@+id/btnSignUp"

@@ -41,7 +41,7 @@ public class Login extends AppCompatActivity {
         btnSignIn= (Button) findViewById(R.id.btnSignIn);
         btnGoSignUp= (Button) findViewById(R.id.btnGoSignUp);
 
-        dRef= FirebaseDatabase.getInstance().getReference().child("Users");
+        dRef= FirebaseDatabase.getInstance().getReference().child("Parents");
 
         //OnStart listener to check if any user is logged in
         authStateListener = new FirebaseAuth.AuthStateListener() {
@@ -52,7 +52,7 @@ public class Login extends AppCompatActivity {
                 //user has previously logged in
                 if(firebaseAuth.getCurrentUser()!=null) {
                     Email= firebaseAuth.getCurrentUser().getEmail();
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), ChildList.class));
                 }
 
             }
@@ -105,6 +105,7 @@ public class Login extends AppCompatActivity {
 
                         //If login successful, go to Home Page
                         String uid= auth.getCurrentUser().getUid();
+
 
 
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));

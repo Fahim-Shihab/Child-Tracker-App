@@ -13,15 +13,18 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class CreateAccount extends AppCompatActivity {
 
     EditText emailField;
     EditText passField;
-    EditText confirmPassField;
+    EditText confirmPassField, parentEmail;
     Button btnSignUp, btnGoSignIn;
 
     FirebaseAuth auth, auth2;
@@ -34,11 +37,12 @@ public class CreateAccount extends AppCompatActivity {
         auth= FirebaseAuth.getInstance();
         auth2= FirebaseAuth.getInstance();
 
-        mRef= FirebaseDatabase.getInstance().getReference().child("Users");
+        mRef= FirebaseDatabase.getInstance().getReference().child("Parents");
 
         emailField= (EditText) findViewById(R.id.newEmail);
         passField= (EditText) findViewById(R.id.newPass);
         confirmPassField= (EditText) findViewById(R.id.confirmPass);
+        parentEmail= findViewById(R.id.parentEmail);
 
         btnSignUp= (Button) findViewById(R.id.btnSignUp);
         btnGoSignIn= findViewById(R.id.btnGoSignIn);
@@ -59,11 +63,38 @@ public class CreateAccount extends AppCompatActivity {
 
     }
 
+    String getUserID(String email){
+        String str[]= email.split("@");
+        return str[0];
+    }
+
     void createAccount(){
 
-        final String newEmail= emailField.getText().toString();
-        String newPass= passField.getText().toString();
-        String confirmPass= confirmPassField.getText().toString();
+        final String newEmail= emailField.getText().toString().trim();
+        String newPass= passField.getText().toString().trim();
+        String confirmPass= confirmPassField.getText().toString().trim();
+        String pEmail= parentEmail.getText().toString().trim();
+
+        String pUID= getUserID(pEmail);
+
+        final DatabaseReference parentRef= mRef.child(pUID);
+
+        mRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    Childs child= new Childs(newEmail);
+                    parentRef.child(System.currentTimeMillis()+"").setValue(child);
+                    Toast.makeText(CreateAccount.this, "Parent Found", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
 
         if(newEmail.equals("")||newPass.equals("")||confirmPass.equals("")){
             Toast.makeText(getApplicationContext(),"Enter Email ID and Password!",Toast.LENGTH_LONG).show();

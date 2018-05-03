@@ -5,14 +5,14 @@ package com.appdev.debsourav.childtracker;
  */
 
 public class Childs {
-    String email, name;
+    String email;
 
     public Childs() {
     }
 
-    public Childs(String email, String name) {
+    public Childs(String email) {
         this.email = email;
-        this.name = name;
+
     }
 
     public String getEmail() {
@@ -23,11 +23,5 @@ public class Childs {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 }

@@ -4,7 +4,10 @@
     "firebase_url": "https://trackphone-a6f55.firebaseio.com",
     "project_id": "trackphone-a6f55",
     "storage_bucket": "trackphone-a6f55.appspot.com"
+<<<<<<< HEAD
+=======
 
+>>>>>>> 1aa585a95ea75bf761df43da9be5a618a52961cd
   },
   "client": [
     {

@@ -15,16 +15,19 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
+
 public class MessageLog extends AppCompatActivity {
 
     DatabaseReference msgRef;
     RecyclerView msgRView;
+    public static String childEmail="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_log);
 
-        msgRef= FirebaseDatabase.getInstance().getReference("Shan/MessageLog");
+        msgRef= FirebaseDatabase.getInstance().getReference().child(childID).child("MessageLog");
         msgRView= findViewById(R.id.msgRView);
         msgRView.setLayoutManager(new LinearLayoutManager(this));
 

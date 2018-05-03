@@ -62,7 +62,11 @@ public class Alarm extends AppCompatActivity {
 
         am.setRepeating(AlarmManager.RTC, time,180000, pi);
         startService(new Intent(this,ChildService.class));
+<<<<<<< HEAD
+        //am.setRepeating(AlarmManager.RTC, time,180000, pir);
+=======
 //        am.setRepeating(AlarmManager.RTC, time,180000, pir);
+>>>>>>> 06621dc5def794fb6338ab841adbbfcc5f65894e
 
     }
 }
