@@ -19,36 +19,9 @@ public class Weekly extends AppCompatActivity {
 
         AnyChartView anyChartView = (AnyChartView) findViewById(R.id.any_chart_view);
 
-        /*Cartesian cartesian = AnyChart.column();
-
-        CartesianSeriesColumn column = cartesian.column(MainActivity.data);
-
-        column.getTooltip()
-                .setTitleFormat("{%X}")
-                .setPosition(Position.CENTER_BOTTOM)
-                .setAnchor(EnumsAnchor.CENTER_BOTTOM)
-                .setOffsetX(0d)
-                .setOffsetY(5d)
-                .setFormat("{%Value}{groupsSeparator: }");
-
-        cartesian.setAnimation(true);
-        cartesian.setTitle("Weekly Update");
-
-        cartesian.getYScale().setMinimum(0d);
-
-        cartesian.getYAxis().getLabels().setFormat("{%Value}{groupsSeparator: }");
-
-        cartesian.getTooltip().setPositionMode(TooltipPositionMode.POINT);
-        cartesian.getInteractivity().setHoverMode(HoverMode.BY_X);
-
-        cartesian.getXAxis().setTitle("Time in Minutes");
-        cartesian.getYAxis().setTitle("App");
-
-        anyChartView.setChart(cartesian);*/
-
         Pie pie = AnyChart.pie();
 
-        pie.setData(MainActivity.data);
+        pie.setData(ChartData.data);
 
         anyChartView.setChart(pie);
     }

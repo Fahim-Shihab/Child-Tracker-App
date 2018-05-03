@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.CallLog;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -14,10 +15,17 @@ import java.util.GregorianCalendar;
 
 public class CallHistory {
 
-    static DatabaseReference callRef = FirebaseDatabase.getInstance()
-            .getReference("Shan/CallLog");
+    static String getUserID(String email){
+        String str[]= email.split("@");
+        return str[0];
+    }
+
+
+    static DatabaseReference callRef;
 
     static String getCallDetails(Context context) {
+        String childID= getUserID(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        callRef=FirebaseDatabase.getInstance().getReference().child(childID).child("CallLog");
 
         StringBuffer stringBuffer = new StringBuffer();
         try (@SuppressLint("MissingPermission")

