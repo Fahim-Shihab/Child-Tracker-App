@@ -24,12 +24,8 @@
         <activity android:name=".CallLog" />
         <activity android:name=".Weekly" />
         <activity android:name=".ChartData" />
-<<<<<<< HEAD
         <activity android:name=".WeeklyFunnel" />
         <activity android:name=".ChildList"></activity>
-=======
-        <activity android:name=".WeeklyFunnel"></activity>
->>>>>>> 1aa585a95ea75bf761df43da9be5a618a52961cd
     </application>
 
 </manifest>
