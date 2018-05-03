@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,Calculator.class);
                 startActivity(intent);
             }});
-
         /*Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
         startActivity(intent);*/
     }
