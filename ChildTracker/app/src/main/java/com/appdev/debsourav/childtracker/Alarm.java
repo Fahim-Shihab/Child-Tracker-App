@@ -57,12 +57,12 @@ public class Alarm extends AppCompatActivity {
         PendingIntent pi = PendingIntent.getBroadcast(this, 0, i, 0);
 
         //setting the repeating alarm that will be fired every day
-<<<<<<< HEAD
+
         am.setRepeating(AlarmManager.RTC, time,AlarmManager.INTERVAL_HOUR, pi);
-=======
+
         am.setRepeating(AlarmManager.RTC, time,180000, pi);
         startService(new Intent(this,ChildService.class));
-        am.setRepeating(AlarmManager.RTC, time,180000, pir);
->>>>>>> 783c2819e0143ed57dad7c7b5c2def2f4a12b345
+//        am.setRepeating(AlarmManager.RTC, time,180000, pir);
+
     }
 }

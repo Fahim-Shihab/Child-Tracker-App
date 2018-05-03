@@ -22,11 +22,13 @@ public class ChartData extends AppCompatActivity {
     DatabaseReference WeeklyRef;
     static List<DataEntry> data = new ArrayList<>();
     Button btnPie, btnFunnel;
+    static int accessed=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart_data);
+
 
         WeeklyRef= FirebaseDatabase.getInstance().getReference("Shan/WeeklyLog");
 
@@ -36,7 +38,6 @@ public class ChartData extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 int val = dataSnapshot.getValue(Integer.class);
                 String key = dataSnapshot.getKey();
-
                 //int val = Integer.parseInt(value);
                 int hours = val/3600;
                 int minutes = val/60;
@@ -45,7 +46,9 @@ public class ChartData extends AppCompatActivity {
 
                 String duration = "\nRun Time: "+hours+" hours "+minutes+" minutes "+seconds+" seconds";
                 System.out.println(appname+minutes);
-                if(minutes>4) data.add(new ValueDataEntry(key,minutes));
+                if(accessed==1) {
+                    if (minutes > 4) data.add(new ValueDataEntry(key, minutes));
+                }
             }
 
             @Override
@@ -81,5 +84,6 @@ public class ChartData extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), WeeklyFunnel.class));
             }
         });
+        accessed++;
     }
 }
