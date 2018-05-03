@@ -85,5 +85,6 @@ public class ChartData extends AppCompatActivity {
             }
         });
         accessed++;
+
     }
 }
