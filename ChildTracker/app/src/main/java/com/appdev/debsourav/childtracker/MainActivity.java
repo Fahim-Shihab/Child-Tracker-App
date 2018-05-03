@@ -15,10 +15,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtCallLog;
     static DatabaseReference callRef, msgRef, mRef;
     FirebaseAuth auth;
-<<<<<<< HEAD
 
-=======
->>>>>>> 1aa585a95ea75bf761df43da9be5a618a52961cd
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

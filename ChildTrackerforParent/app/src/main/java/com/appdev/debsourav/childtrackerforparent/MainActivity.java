@@ -10,11 +10,7 @@ import android.widget.ImageButton;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btnMsgLog, Applog, btnCallLog, btnWeekly, btnGPS;
-<<<<<<< HEAD
     public static String childID;
-=======
-
->>>>>>> 1aa585a95ea75bf761df43da9be5a618a52961cd
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
