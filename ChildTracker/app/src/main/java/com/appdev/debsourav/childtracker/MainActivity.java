@@ -2,6 +2,7 @@ package com.appdev.debsourav.childtracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -25,11 +26,6 @@ public class MainActivity extends AppCompatActivity {
         callRef= FirebaseDatabase.getInstance().getReference("Calls");
         msgRef= FirebaseDatabase.getInstance().getReference("Messages");
 
-
-
-
-
-
         ImageButton buttonAlarm = findViewById(R.id.alarmSet);
 
         buttonAlarm.setOnClickListener(new View.OnClickListener() {
@@ -49,7 +45,9 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this,Calculator.class);
                 startActivity(intent);
             }});
-        /*Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
-        startActivity(intent);*/
+        if (AppStats.getUsageStatsList(this).isEmpty()) {
+            Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
+            startActivity(intent);
+        }
     }
 }

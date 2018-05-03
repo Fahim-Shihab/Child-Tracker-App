@@ -16,7 +16,7 @@ import java.util.Calendar;
 
 public class Alarm extends AppCompatActivity {
 
-    Button buttonClock;
+    Button buttonClock, STop;
     TimePicker TimePick;
 
     @Override
@@ -26,6 +26,14 @@ public class Alarm extends AppCompatActivity {
 
         buttonClock = findViewById(R.id.alarmClockButton);
         TimePick = findViewById(R.id.TimePicker);
+        STop = findViewById(R.id.Stopping);
+
+        STop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                MyReceiver.mp.stop();
+            }});
 
         buttonClock.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,15 +66,14 @@ public class Alarm extends AppCompatActivity {
 
         //setting the repeating alarm that will be fired every day
 
-        am.setRepeating(AlarmManager.RTC, time,AlarmManager.INTERVAL_HOUR, pi);
+        //am.setRepeating(AlarmManager.RTC, time,AlarmManager.INTERVAL_HOUR, pi);
 
         am.setRepeating(AlarmManager.RTC, time,180000, pi);
         startService(new Intent(this,ChildService.class));
-<<<<<<< HEAD
         //am.setRepeating(AlarmManager.RTC, time,180000, pir);
-=======
+
 //        am.setRepeating(AlarmManager.RTC, time,180000, pir);
->>>>>>> 06621dc5def794fb6338ab841adbbfcc5f65894e
+
 
     }
 }
