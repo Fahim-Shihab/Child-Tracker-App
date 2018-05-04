@@ -9,7 +9,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
+//import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
 
 public class CallLog extends AppCompatActivity {
 
@@ -23,7 +23,7 @@ public class CallLog extends AppCompatActivity {
 
         setTitle("Call Log");
 
-        mRef= FirebaseDatabase.getInstance().getReference().child(childID).child("CallLog");
+        mRef= FirebaseDatabase.getInstance().getReference().child(ChildList.childID).child("CallLog");
         recyclerView= findViewById(R.id.rView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

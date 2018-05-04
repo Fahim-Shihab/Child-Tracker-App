@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
+//import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
 
 
 public class drawing_Line extends FragmentActivity implements OnMapReadyCallback {
@@ -48,6 +48,7 @@ public class drawing_Line extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+       // mMap.animateCamera( CameraUpdateFactory.zoomTo( 15.0f ) );
         mMap.setMaxZoomPreference(15.0f);
         drawBusRoute();
     }
@@ -55,7 +56,7 @@ public class drawing_Line extends FragmentActivity implements OnMapReadyCallback
     void drawBusRoute(){
 
         point = new ArrayList<>();
-        routePolyDB = FirebaseDatabase.getInstance().getReference().child(childID).child("Location");
+        routePolyDB = FirebaseDatabase.getInstance().getReference().child(ChildList.childID).child("Location");
         routePolyDB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

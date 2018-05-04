@@ -23,7 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
+//import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -42,7 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         setTitle("Current Location");
 
-        mref = FirebaseDatabase.getInstance().getReference().child(childID).child("Location");
+        mref = FirebaseDatabase.getInstance().getReference().child(ChildList.childID).child("Location");
         Button button= (Button) findViewById(R.id.btnid);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +75,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String str= String.valueOf(lat) +" "+ String.valueOf(lng) ;
 
                 marker = mMap.addMarker(new MarkerOptions().position(sydney).title("Current Location: " + str));
-                Toast.makeText(getBaseContext(),"Lat: "+String.valueOf(lat)+", Long: "+String.valueOf(lng),Toast.LENGTH_LONG).show();
+                //Toast.makeText(getBaseContext(),"Lat: "+String.valueOf(lat)+", Long: "+String.valueOf(lng),Toast.LENGTH_LONG).show();
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
             }

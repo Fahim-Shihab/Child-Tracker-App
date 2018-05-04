@@ -33,7 +33,7 @@ public class MySerVice extends Service {
 
     private static final String TAG = "BOOMBOOMTESTGPS";
     private LocationManager mLocationManager = null;
-    private static final int LOCATION_INTERVAL = 60000;
+    private static final int LOCATION_INTERVAL = 0;
     private static final float LOCATION_DISTANCE = 0;
     static String str;
     //DatabaseReference mRef ;  //= FirebaseDatabase.getInstance().getReference().child("Location");
@@ -66,9 +66,6 @@ public class MySerVice extends Service {
             newPost.child("Lat").setValue(lat);
 
             newPost.child("Long").setValue(lng);
-
-
-
 
         }
 

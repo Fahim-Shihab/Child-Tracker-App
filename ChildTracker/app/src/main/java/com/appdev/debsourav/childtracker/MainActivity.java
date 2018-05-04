@@ -2,6 +2,7 @@ package com.appdev.debsourav.childtracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -23,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         auth= FirebaseAuth.getInstance();
 
-        mRef= FirebaseDatabase.getInstance().getReference().child("Childs").child(auth.getCurrentUser().getUid()+"");
-        callRef= FirebaseDatabase.getInstance().getReference("Calls");
-        msgRef= FirebaseDatabase.getInstance().getReference("Messages");
+        /*mRef= FirebaseDatabase.getInstance().getReference().child("Childs").child(auth.getCurrentUser().getUid()+"");
+        /*callRef= FirebaseDatabase.getInstance().getReference("Calls");
+        msgRef= FirebaseDatabase.getInstance().getReference("Messages");*/
 
         ImageButton buttonAlarm = findViewById(R.id.alarmSet);
 
@@ -51,5 +52,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         startService(new Intent(getBaseContext(),MySerVice.class));
+
     }
 }

@@ -16,26 +16,30 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
-import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
+//import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
 
 
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btnMsgLog, Applog, btnCallLog, btnWeekly, btnGPS;
-    static int count = 0;
 
     static List<DataEntry> wdata = new ArrayList<>();
     DatabaseReference WeeklyRef;
+    static int count =1;
+    Map<String,Integer> map;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(count>1) wdata.clear();
+
         setTitle("Menu");
 
-        WeeklyRef = FirebaseDatabase.getInstance().getReference().child(childID).child("WeeklyLog");
+        WeeklyRef = FirebaseDatabase.getInstance().getReference().child(ChildList.childID).child("WeeklyLog");
 
             WeeklyRef.addChildEventListener(new ChildEventListener() {
 
@@ -52,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
                     String duration = "\nRun Time: " + hours + " hours " + minutes + " minutes " + seconds + " seconds";
                     System.out.println(appname + minutes);
 
-                    if (minutes > 4) {
-                        if (count == 0) {
+                    if (minutes > 15 ) {
+
                             wdata.add(new ValueDataEntry(key, minutes));
-                        }
+
                     }
                 }
 
@@ -118,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Weekly.class));
                 count++;
+
             }
         });
 
