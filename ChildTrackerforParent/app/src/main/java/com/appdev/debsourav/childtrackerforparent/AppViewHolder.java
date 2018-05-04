@@ -7,6 +7,7 @@ import android.widget.TextView;
 public class AppViewHolder extends RecyclerView.ViewHolder{
     View appView;
     public AppViewHolder(View itemView) {
+
         super(itemView);
         appView= itemView;
     }

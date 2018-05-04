@@ -23,7 +23,7 @@ import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btnMsgLog, Applog, btnCallLog, btnWeekly, btnGPS;
-
+    static int count = 0;
 
     static List<DataEntry> wdata = new ArrayList<>();
     DatabaseReference WeeklyRef;
@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setTitle("Menu");
 
         WeeklyRef = FirebaseDatabase.getInstance().getReference().child(childID).child("WeeklyLog");
 
@@ -50,9 +52,11 @@ public class MainActivity extends AppCompatActivity {
                     String duration = "\nRun Time: " + hours + " hours " + minutes + " minutes " + seconds + " seconds";
                     System.out.println(appname + minutes);
 
-                    if (minutes > 4) wdata.add(new ValueDataEntry(key, minutes));
-
-
+                    if (minutes > 4) {
+                        if (count == 0) {
+                            wdata.add(new ValueDataEntry(key, minutes));
+                        }
+                    }
                 }
 
                 @Override
@@ -113,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Weekly.class));
+                count++;
             }
         });
 
