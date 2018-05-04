@@ -23,6 +23,8 @@ public class AppLog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_log);
 
+        setTitle("App Log");
+
         appRef = FirebaseDatabase.getInstance().getReference().child(childID).child("AppLog");
 
         recyclerView= findViewById(R.id.AppView);

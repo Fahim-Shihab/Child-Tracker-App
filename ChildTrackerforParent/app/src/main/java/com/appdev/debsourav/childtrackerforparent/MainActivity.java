@@ -23,13 +23,10 @@ import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btnMsgLog, Applog, btnCallLog, btnWeekly, btnGPS;
-<<<<<<< HEAD
-    public static String childID;
-=======
+
 
     static List<DataEntry> wdata = new ArrayList<>();
     DatabaseReference WeeklyRef;
->>>>>>> 21118c26ae2c5b000c18646217b754b9890808cd
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +117,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnGPS = findViewById(R.id.btnGPS);
+
+        btnGPS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MapsActivity.class));
+            }
+        });
 
     }
 }

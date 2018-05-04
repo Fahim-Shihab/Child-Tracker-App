@@ -1,10 +1,6 @@
 package com.appdev.debsourav.childtrackerforparent;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
@@ -26,7 +22,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+
+import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -43,12 +40,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        mref = FirebaseDatabase.getInstance().getReference("Location").child("C1");
+        setTitle("Current Location");
+
+        mref = FirebaseDatabase.getInstance().getReference().child(childID).child("Location");
         Button button= (Button) findViewById(R.id.btnid);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                s tartActivity(new Intent(getApplicationContext(),drawing_Line.class));
+                startActivity(new Intent(getApplicationContext(),drawing_Line.class));
             }
         });
 
@@ -66,7 +65,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
                 if(marker!= null)
-                marker.remove();
+                    marker.remove();
 
                 Sample sample= dataSnapshot.getValue(Sample.class);
                 lat= sample.getLat();

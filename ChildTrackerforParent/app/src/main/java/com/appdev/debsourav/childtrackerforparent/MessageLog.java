@@ -27,6 +27,8 @@ public class MessageLog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_log);
 
+        setTitle("Message Log");
+
         msgRef= FirebaseDatabase.getInstance().getReference().child(childID).child("MessageLog");
         msgRView= findViewById(R.id.msgRView);
         msgRView.setLayoutManager(new LinearLayoutManager(this));

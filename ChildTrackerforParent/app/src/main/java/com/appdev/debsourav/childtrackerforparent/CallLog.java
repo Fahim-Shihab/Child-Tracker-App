@@ -21,6 +21,8 @@ public class CallLog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call_log);
 
+        setTitle("Call Log");
+
         mRef= FirebaseDatabase.getInstance().getReference().child(childID).child("CallLog");
         recyclerView= findViewById(R.id.rView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
