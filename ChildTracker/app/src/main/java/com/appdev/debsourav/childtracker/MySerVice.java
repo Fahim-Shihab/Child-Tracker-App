@@ -9,24 +9,8 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
-import android.app.Service;
-import android.content.Context;
-import android.content.Intent;
-import android.location.Location;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.util.Log;
-import android.app.Service;
-import android.content.Intent;
-import android.os.IBinder;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 
-import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -38,14 +22,23 @@ import java.util.concurrent.TimeUnit;
 
 
 public class MySerVice extends Service {
+
+    static String getUserID(String email) {
+        String str[] = email.split("@");
+        return str[0];
+    }
+
+    static String childID= getUserID(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+
     private static final String TAG = "BOOMBOOMTESTGPS";
     private LocationManager mLocationManager = null;
     private static final int LOCATION_INTERVAL = 0;   //20s
     private static final float LOCATION_DISTANCE = 0;
     static String str;
-    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference().child("Location");
+    //DatabaseReference mRef ;  //= FirebaseDatabase.getInstance().getReference().child("Location");
     DatabaseReference ttlRef = FirebaseDatabase.getInstance().getReference().child("Location");
-
+    DatabaseReference mRef= FirebaseDatabase.getInstance().getReference().child(childID).child("Location");
     private class LocationListener implements android.location.LocationListener
     {
         Location mLastLocation;
@@ -68,7 +61,7 @@ public class MySerVice extends Service {
 
             long millis=System.currentTimeMillis();
             Date date=new Date(millis);
-            DatabaseReference newPost = mRef.child("C1").child(String.valueOf(date));
+            DatabaseReference newPost = mRef.child(String.valueOf(date));
 
             newPost.child("Lat").setValue(lat);
 

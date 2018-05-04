@@ -16,11 +16,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtCallLog;
     static DatabaseReference callRef, msgRef, mRef;
     FirebaseAuth auth;
-<<<<<<< HEAD
 
-
-=======
->>>>>>> 21118c26ae2c5b000c18646217b754b9890808cd
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,5 +50,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
             startActivity(intent);
         }
+        startService(new Intent(getBaseContext(),MySerVice.class));
     }
 }

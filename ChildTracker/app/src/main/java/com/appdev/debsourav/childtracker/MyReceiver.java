@@ -37,6 +37,7 @@ public class MyReceiver extends BroadcastReceiver {
         mp.start();
         mp.setLooping(true);
 
+
         Toast.makeText(context, "Updating to Firebase", Toast.LENGTH_LONG).show();
         Log.d("Alarm set","Alarm just fired");
     }
