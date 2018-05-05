@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">ChildTrackerforParent</string>
+    <string name="app_name">Know Your Child</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_drawing__line">Map</string>
 </resources>

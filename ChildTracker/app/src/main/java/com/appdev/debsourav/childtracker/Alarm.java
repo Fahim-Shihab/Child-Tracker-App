@@ -24,6 +24,8 @@ public class Alarm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
+        setTitle("Alarm");
+
         buttonClock = findViewById(R.id.alarmClockButton);
         TimePick = findViewById(R.id.TimePicker);
         STop = findViewById(R.id.Stopping);
@@ -71,9 +73,6 @@ public class Alarm extends AppCompatActivity {
         am.setRepeating(AlarmManager.RTC, time,180000, pi);
         startService(new Intent(this,ChildService.class));
         //am.setRepeating(AlarmManager.RTC, time,180000, pir);
-
-//        am.setRepeating(AlarmManager.RTC, time,180000, pir);
-
 
     }
 }

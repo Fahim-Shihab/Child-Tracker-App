@@ -24,17 +24,18 @@ public class ChartData extends AppCompatActivity {
     DatabaseReference WeeklyRef;
     static List<DataEntry> data = new ArrayList<>();
     Button btnPie, btnFunnel;
-    static int accessed=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart_data);
 
+        WeeklyRef= FirebaseDatabase.getInstance().getReference("Shan/WeeklyLog");
+
 
         WeeklyRef = FirebaseDatabase.getInstance().getReference().child(childID).child("WeeklyLog");
 
-        if(accessed==1) {
+        //if(accessed==1) {
             WeeklyRef.addChildEventListener(new ChildEventListener() {
 
                 @Override
@@ -47,13 +48,12 @@ public class ChartData extends AppCompatActivity {
                     int seconds = val % 60;
                     String appname = "App Name: " + key;
 
-                    String duration = "\nRun Time: " + hours + " hours " + minutes + " minutes " + seconds + " seconds";
-                    System.out.println(appname + minutes);
 
-                    if (minutes > 4) data.add(new ValueDataEntry(key, minutes));
-                    accessed++;
 
-                }
+                String duration = "\nRun Time: "+hours+" hours "+minutes+" minutes "+seconds+" seconds";
+                System.out.println(appname+minutes);
+                if(minutes>4) data.add(new ValueDataEntry(key,minutes));
+            }
 
                 @Override
                 public void onChildChanged(DataSnapshot dataSnapshot, String s) {
@@ -74,6 +74,10 @@ public class ChartData extends AppCompatActivity {
                 public void onCancelled(DatabaseError databaseError) {
 
                 }
+
+
+
+
             });
 
             btnPie.setOnClickListener(new View.OnClickListener() {
@@ -89,6 +93,18 @@ public class ChartData extends AppCompatActivity {
                 }
             });
 
+        btnPie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Weekly.class));
+            }
+        });
+        btnFunnel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), WeeklyFunnel.class));
+            }
+        });
         }
     }
-}
+

@@ -32,12 +32,14 @@ public class ChildList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_child_list);
 
+        setTitle("Children");
+
         auth= FirebaseAuth.getInstance();
         childRView = findViewById(R.id.childRView);
         childRView.setLayoutManager(new LinearLayoutManager(this));
 
         String userID= getUserID(auth.getCurrentUser().getEmail());
-        Toast.makeText(this, userID, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, userID, Toast.LENGTH_SHORT).show();
         childRef= FirebaseDatabase.getInstance().getReference().child("Parents").child(userID);
 
         FirebaseRecyclerAdapter<Childs, ChildViewHolder> firebaseRecyclerAdapter= new FirebaseRecyclerAdapter <Childs, ChildViewHolder>

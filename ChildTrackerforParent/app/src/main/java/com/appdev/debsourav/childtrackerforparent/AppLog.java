@@ -11,7 +11,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
-import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
+//import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
 
 public class AppLog extends AppCompatActivity {
     
@@ -23,7 +23,9 @@ public class AppLog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_log);
 
-        appRef = FirebaseDatabase.getInstance().getReference().child(childID).child("AppLog");
+        setTitle("App Log");
+
+        appRef = FirebaseDatabase.getInstance().getReference().child(ChildList.childID).child("AppLog");
 
         recyclerView= findViewById(R.id.AppView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
