@@ -54,7 +54,7 @@ public class Login extends AppCompatActivity {
                 //user has previously logged in
                 if(firebaseAuth.getCurrentUser()!=null) {
                     Email= firebaseAuth.getCurrentUser().getEmail();
-                    //startActivity(new Intent(Login.this, MainActivity.class));
+                    startActivity(new Intent(Login.this, MainActivity.class));
                 }
 
             }

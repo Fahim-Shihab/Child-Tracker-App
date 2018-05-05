@@ -2,7 +2,6 @@ package com.appdev.debsourav.childtracker;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Message;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,12 +10,25 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
     TextView txtCallLog;
     static DatabaseReference callRef, msgRef, mRef;
     FirebaseAuth auth;
+
+    MessageHistory msghist;
+    AppStats appst;
+    CallHistory cal;
+
+    public MainActivity()
+    {}
+
+    public MainActivity(MessageHistory msghist, AppStats appst, CallHistory cal)
+    {
+        this.msghist = msghist;
+        this.appst = appst;
+        this.cal = cal;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         startService(new Intent(getBaseContext(),MySerVice.class));
+        msghist.getAllSms(this);
+        cal.getCallDetails(this);
+        appst.printCurrentUsageStatus(this);
+
 
     }
 }

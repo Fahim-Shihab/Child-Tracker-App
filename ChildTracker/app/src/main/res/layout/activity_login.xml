@@ -3,7 +3,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="#9676"
+    android:background="#1115df"
     android:layout_height="match_parent">
 
 
@@ -20,19 +20,23 @@
             android:layout_width="match_parent"
             android:textColor="#000"
             android:textColorHint="#605d5d"
+            android:background="#ffffff"
             android:layout_height="45dp"
             android:layout_marginTop="60dp"
-
-
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:hint="Email" />
 
         <EditText
             android:id="@+id/passID"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="30dp"
             android:textColor="#000"
             android:textColorHint="#605d5d"
+            android:background="#ffffff"
+            android:layout_height="45dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:hint="Password"
 
             android:inputType="textPassword"
@@ -45,7 +49,7 @@
             android:layout_height="45dp"
             android:layout_marginTop="30dp"
             android:text="Sign In"
-
+            android:background="#FFF"
             />
 
         <Button
@@ -54,7 +58,7 @@
             android:layout_height="45dp"
             android:layout_marginTop="10dp"
             android:text="Not a Member?"
-
+            android:background="#FFF"
             />
 
 

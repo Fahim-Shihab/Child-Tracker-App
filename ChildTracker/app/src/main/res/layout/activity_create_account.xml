@@ -2,17 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#969797"
+    android:background="#1115df"
     android:gravity="center">
 
     <EditText
         android:id="@+id/newEmail"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="60dp"
         android:textColor="#000"
         android:textColorHint="#605d5d"
-
+        android:background="#ffffff"
+        android:layout_height="45dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Email"
 
         />
@@ -20,10 +22,13 @@
     <EditText
         android:id="@+id/newPass"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="30dp"
         android:textColor="#000"
         android:textColorHint="#605d5d"
+        android:background="#ffffff"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:inputType="textPassword"
         android:hint="New Password"
 
@@ -33,10 +38,13 @@
     <EditText
         android:id="@+id/confirmPass"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="30dp"
         android:textColor="#000"
         android:textColorHint="#605d5d"
+        android:background="#ffffff"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:inputType="textPassword"
         android:hint="Confirm Password"
 
@@ -46,10 +54,13 @@
     <EditText
         android:id="@+id/parentEmail"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="30dp"
         android:textColor="#000"
         android:textColorHint="#605d5d"
+        android:background="#ffffff"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:hint="Parents Email (Has to be registered)"
 
         />
@@ -61,9 +72,9 @@
         android:layout_height="45dp"
         android:layout_marginTop="30dp"
         android:text="Create Account"
-        android:textColor="#FFF"
+        android:textColor="#000"
         android:padding="5dp"
-        android:background="@color/colorPrimary"
+        android:background="#FFF"
         />
 
     <Button
@@ -74,9 +85,9 @@
         android:layout_height="45dp"
         android:layout_marginTop="20dp"
         android:text="Sign In with Existing account"
-        android:textColor="#FFF"
+        android:textColor="#000"
         android:padding="5dp"
-        android:background="@color/colorPrimary"
+        android:background="#FFF"
 
         />
 

