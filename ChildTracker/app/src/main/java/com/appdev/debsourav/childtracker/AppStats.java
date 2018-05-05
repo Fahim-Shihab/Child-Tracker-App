@@ -6,7 +6,6 @@ import android.app.usage.UsageStatsManager;
 import android.content.Context;
 import android.util.Log;
 
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -16,19 +15,14 @@ import java.util.Date;
 import java.util.List;
 
 public class AppStats {
-
-    static String getUserID(String email){
-        String str[]= email.split("@");
-        return str[0];
-    }
-
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("M-d-yyyy HH:mm:ss");
     public static final String TAG = AppStats.class.getSimpleName();
-    static String childID= getUserID(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
-    static DatabaseReference appRef;
+    static DatabaseReference appRef = FirebaseDatabase.getInstance()
+            .getReference("Shan/AppLog");
 
-    static DatabaseReference WeeklyRef;
+    static DatabaseReference WeeklyRef = FirebaseDatabase.getInstance()
+            .getReference("Shan/WeeklyLog");
 
     @SuppressWarnings("ResourceType")
     public static void getStats(Context context){
@@ -87,7 +81,6 @@ public class AppStats {
     }
 
     public static void printUsageStats(List<UsageStats> usageStatsList){
-        appRef = FirebaseDatabase.getInstance().getReference().child(childID).child("AppLog");
 
         for (UsageStats u : usageStatsList){
 
@@ -118,8 +111,6 @@ public class AppStats {
     }
 
     public static void printWeeklyUsageStats(List<UsageStats> usageStatsList){
-
-        WeeklyRef = FirebaseDatabase.getInstance().getReference().child(childID).child("WeeklyLog");
 
         for (UsageStats u : usageStatsList){
 

@@ -17,8 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
-
 public class ChartData extends AppCompatActivity {
 
     DatabaseReference WeeklyRef;
@@ -30,27 +28,10 @@ public class ChartData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart_data);
 
-<<<<<<< HEAD
         WeeklyRef= FirebaseDatabase.getInstance().getReference("Shan/WeeklyLog");
-=======
 
-        WeeklyRef = FirebaseDatabase.getInstance().getReference().child(childID).child("WeeklyLog");
+        WeeklyRef.addChildEventListener(new ChildEventListener() {
 
-        if(accessed==1) {
-            WeeklyRef.addChildEventListener(new ChildEventListener() {
->>>>>>> 21118c26ae2c5b000c18646217b754b9890808cd
-
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    int val = dataSnapshot.getValue(Integer.class);
-                    String key = dataSnapshot.getKey();
-                    //int val = Integer.parseInt(value);
-                    int hours = val / 3600;
-                    int minutes = val / 60;
-                    int seconds = val % 60;
-                    String appname = "App Name: " + key;
-
-<<<<<<< HEAD
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 int val = dataSnapshot.getValue(Integer.class);
@@ -66,51 +47,28 @@ public class ChartData extends AppCompatActivity {
                 System.out.println(appname+minutes);
                 if(minutes>4) data.add(new ValueDataEntry(key,minutes));
             }
-=======
-                    String duration = "\nRun Time: " + hours + " hours " + minutes + " minutes " + seconds + " seconds";
-                    System.out.println(appname + minutes);
 
-                    if (minutes > 4) data.add(new ValueDataEntry(key, minutes));
-                    accessed++;
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                }
->>>>>>> 21118c26ae2c5b000c18646217b754b9890808cd
+            }
 
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                }
+            }
 
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                }
+            }
 
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-                }
+            }
+        });
 
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-            btnPie.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(getApplicationContext(), Weekly.class));
-                }
-            });
-            btnFunnel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(getApplicationContext(), WeeklyFunnel.class));
-                }
-            });
-
-<<<<<<< HEAD
         btnPie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,8 +81,5 @@ public class ChartData extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), WeeklyFunnel.class));
             }
         });
-=======
-        }
->>>>>>> 21118c26ae2c5b000c18646217b754b9890808cd
     }
 }

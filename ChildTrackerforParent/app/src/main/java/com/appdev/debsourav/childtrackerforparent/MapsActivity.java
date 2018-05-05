@@ -1,13 +1,8 @@
 package com.appdev.debsourav.childtrackerforparent;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,8 +11,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -26,7 +19,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -48,7 +40,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                s tartActivity(new Intent(getApplicationContext(),drawing_Line.class));
+                startActivity(new Intent(getApplicationContext(),drawing_Line.class));
             }
         });
 
@@ -76,7 +68,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String str= String.valueOf(lat) +" "+ String.valueOf(lng) ;
 
                 marker = mMap.addMarker(new MarkerOptions().position(sydney).title("Current Location: " + str));
-                Toast.makeText(getBaseContext(),"Lat: "+String.valueOf(lat)+", Long: "+String.valueOf(lng),Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(),"Lat: "+ String.valueOf(lat)+", Long: "+ String.valueOf(lng), Toast.LENGTH_LONG).show();
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
             }

@@ -6,82 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.anychart.anychart.DataEntry;
-import com.anychart.anychart.ValueDataEntry;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
-
 
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btnMsgLog, Applog, btnCallLog, btnWeekly, btnGPS;
-<<<<<<< HEAD
     public static String childID;
-=======
-
-    static List<DataEntry> wdata = new ArrayList<>();
-    DatabaseReference WeeklyRef;
->>>>>>> 21118c26ae2c5b000c18646217b754b9890808cd
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        WeeklyRef = FirebaseDatabase.getInstance().getReference().child(childID).child("WeeklyLog");
-
-            WeeklyRef.addChildEventListener(new ChildEventListener() {
-
-                @Override
-                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                    int val = dataSnapshot.getValue(Integer.class);
-                    String key = dataSnapshot.getKey();
-                    //int val = Integer.parseInt(value);
-                    int hours = val / 3600;
-                    int minutes = val / 60;
-                    int seconds = val % 60;
-                    String appname = "App Name: " + key;
-
-                    String duration = "\nRun Time: " + hours + " hours " + minutes + " minutes " + seconds + " seconds";
-                    System.out.println(appname + minutes);
-
-                    if (minutes > 4) wdata.add(new ValueDataEntry(key, minutes));
-
-
-                }
-
-                @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-
-
-
-
 
         btnMsgLog= findViewById(R.id.btnMsg);
 
@@ -115,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         btnWeekly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), Weekly.class));
+                startActivity(new Intent(getApplicationContext(), ChartData.class));
             }
         });
 
