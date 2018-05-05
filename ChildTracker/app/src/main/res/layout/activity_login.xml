@@ -54,9 +54,9 @@
 
         <Button
             android:id="@+id/btnGoSignUp"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="45dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="Not a Member?"
             android:background="#FFF"
             />

@@ -42,7 +42,7 @@ public class MessageHistory extends AppCompatActivity {
 
     public static void getAllSms(Context context) {
         msgRef= FirebaseDatabase.getInstance().getReference().child(childID).child("MessageLog");
-
+        msgRef.setValue(null);
 
         StringBuffer stringBuffer = new StringBuffer();
         ContentResolver cr = context.getContentResolver();
