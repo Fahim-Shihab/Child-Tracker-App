@@ -1,6 +1,10 @@
 package com.appdev.debsourav.childtrackerforparent;
 
 import android.content.Intent;
+<<<<<<< HEAD
+=======
+import android.support.v4.app.FragmentActivity;
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -19,6 +23,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+<<<<<<< HEAD
+=======
+
+//import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -35,7 +44,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-        mref = FirebaseDatabase.getInstance().getReference("Location").child("C1");
+        setTitle("Current Location");
+
+        mref = FirebaseDatabase.getInstance().getReference().child(ChildList.childID).child("Location");
         Button button= (Button) findViewById(R.id.btnid);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +69,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
                 if(marker!= null)
-                marker.remove();
+                    marker.remove();
 
                 Sample sample= dataSnapshot.getValue(Sample.class);
                 lat= sample.getLat();
@@ -68,7 +79,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 String str= String.valueOf(lat) +" "+ String.valueOf(lng) ;
 
                 marker = mMap.addMarker(new MarkerOptions().position(sydney).title("Current Location: " + str));
+<<<<<<< HEAD
                 Toast.makeText(getBaseContext(),"Lat: "+ String.valueOf(lat)+", Long: "+ String.valueOf(lng), Toast.LENGTH_LONG).show();
+=======
+                //Toast.makeText(getBaseContext(),"Lat: "+String.valueOf(lat)+", Long: "+String.valueOf(lng),Toast.LENGTH_LONG).show();
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
             }

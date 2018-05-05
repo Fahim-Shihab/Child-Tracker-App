@@ -17,6 +17,8 @@ public class Weekly extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weekly);
 
+        setTitle("Weekly App Usage");
+
         AnyChartView anyChartView = (AnyChartView) findViewById(R.id.any_chart_view);
 
         Pie pie = AnyChart.pie();

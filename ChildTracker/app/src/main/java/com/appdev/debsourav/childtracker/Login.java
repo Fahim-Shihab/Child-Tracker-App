@@ -32,6 +32,8 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        setTitle("Log In");
+
 
 
         auth= FirebaseAuth.getInstance();
@@ -52,7 +54,7 @@ public class Login extends AppCompatActivity {
                 //user has previously logged in
                 if(firebaseAuth.getCurrentUser()!=null) {
                     Email= firebaseAuth.getCurrentUser().getEmail();
-                    //startActivity(new Intent(Login.this, MainActivity.class));
+                    startActivity(new Intent(Login.this, MainActivity.class));
                 }
 
             }

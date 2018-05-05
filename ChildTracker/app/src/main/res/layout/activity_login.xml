@@ -3,7 +3,11 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+<<<<<<< HEAD
 
+=======
+    android:background="#1115df"
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
     android:layout_height="match_parent">
 
 
@@ -20,19 +24,23 @@
             android:layout_width="match_parent"
             android:textColor="#000"
             android:textColorHint="#605d5d"
+            android:background="#ffffff"
             android:layout_height="45dp"
             android:layout_marginTop="60dp"
-
-
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:hint="Email" />
 
         <EditText
             android:id="@+id/passID"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="30dp"
             android:textColor="#000"
             android:textColorHint="#605d5d"
+            android:background="#ffffff"
+            android:layout_height="45dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:hint="Password"
 
             android:inputType="textPassword"
@@ -45,16 +53,16 @@
             android:layout_height="45dp"
             android:layout_marginTop="30dp"
             android:text="Sign In"
-
+            android:background="#FFF"
             />
 
         <Button
             android:id="@+id/btnGoSignUp"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="45dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:text="Not a Member?"
-
+            android:background="#FFF"
             />
 
 

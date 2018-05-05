@@ -24,6 +24,8 @@ public class Alarm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
+        setTitle("Alarm");
+
         buttonClock = findViewById(R.id.alarmClockButton);
         TimePick = findViewById(R.id.TimePicker);
 

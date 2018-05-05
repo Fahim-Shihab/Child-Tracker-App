@@ -11,6 +11,11 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
+<<<<<<< HEAD
+=======
+//import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
+
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 public class AppLog extends AppCompatActivity {
     
     DatabaseReference appRef;
@@ -21,7 +26,13 @@ public class AppLog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_log);
 
+<<<<<<< HEAD
         appRef= FirebaseDatabase.getInstance().getReference("Shan/AppLog");
+=======
+        setTitle("App Log");
+
+        appRef = FirebaseDatabase.getInstance().getReference().child(ChildList.childID).child("AppLog");
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 
         recyclerView= findViewById(R.id.AppView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -2,7 +2,10 @@ package com.appdev.debsourav.childtrackerforparent;
 
 import android.graphics.Color;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.support.v4.app.FragmentActivity;
+=======
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,6 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+//import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
+
 
 public class drawing_Line extends FragmentActivity implements OnMapReadyCallback {
 
@@ -32,6 +37,9 @@ public class drawing_Line extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drawing__line);
+
+        setTitle("Location History");
+
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
@@ -43,6 +51,7 @@ public class drawing_Line extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+       // mMap.animateCamera( CameraUpdateFactory.zoomTo( 15.0f ) );
         mMap.setMaxZoomPreference(15.0f);
         drawBusRoute();
     }
@@ -50,7 +59,7 @@ public class drawing_Line extends FragmentActivity implements OnMapReadyCallback
     void drawBusRoute(){
 
         point = new ArrayList<>();
-        routePolyDB = FirebaseDatabase.getInstance().getReference("Location").child("C1");
+        routePolyDB = FirebaseDatabase.getInstance().getReference().child(ChildList.childID).child("Location");
         routePolyDB.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -62,7 +71,7 @@ public class drawing_Line extends FragmentActivity implements OnMapReadyCallback
                     double lng= sample.getLong();
 
 
-                        LatLng aPoint = new LatLng(lat,lng);
+                    LatLng aPoint = new LatLng(lat,lng);
                     if (flag==0)
                     {
                         mMap.addMarker(new MarkerOptions().position(aPoint).title("Marker in Start Position"));
@@ -71,7 +80,7 @@ public class drawing_Line extends FragmentActivity implements OnMapReadyCallback
                         flag=1;
 
                     }
-                        point.add(aPoint);
+                    point.add(aPoint);
                 }
                 drawPolyline(point);
             }
@@ -89,3 +98,4 @@ public class drawing_Line extends FragmentActivity implements OnMapReadyCallback
         mMap.addPolyline( polylineOptions );
     }
 }
+

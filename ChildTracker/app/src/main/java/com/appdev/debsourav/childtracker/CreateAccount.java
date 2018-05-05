@@ -34,6 +34,8 @@ public class CreateAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
+        setTitle("Create Account");
+
         auth= FirebaseAuth.getInstance();
         auth2= FirebaseAuth.getInstance();
 

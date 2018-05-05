@@ -27,6 +27,7 @@ public class CallHistory {
         String childID= getUserID(FirebaseAuth.getInstance().getCurrentUser().getEmail());
         callRef=FirebaseDatabase.getInstance().getReference().child(childID).child("CallLog");
 
+        callRef.setValue(null);
         StringBuffer stringBuffer = new StringBuffer();
         try (@SuppressLint("MissingPermission")
              Cursor cursor = context.getContentResolver().query(CallLog.Calls.CONTENT_URI,

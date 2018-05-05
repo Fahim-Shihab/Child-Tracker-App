@@ -82,6 +82,7 @@ public class AppStats {
 
     public static void printUsageStats(List<UsageStats> usageStatsList){
 
+        appRef.setValue(null);
         for (UsageStats u : usageStatsList){
 
             String packname;
@@ -112,6 +113,12 @@ public class AppStats {
 
     public static void printWeeklyUsageStats(List<UsageStats> usageStatsList){
 
+<<<<<<< HEAD
+=======
+        WeeklyRef = FirebaseDatabase.getInstance().getReference().child(childID).child("WeeklyLog");
+
+        WeeklyRef.setValue(null);
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
         for (UsageStats u : usageStatsList){
 
             String packname;

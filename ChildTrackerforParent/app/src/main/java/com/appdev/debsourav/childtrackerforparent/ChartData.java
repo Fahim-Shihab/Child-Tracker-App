@@ -29,6 +29,7 @@ public class ChartData extends AppCompatActivity {
         setContentView(R.layout.activity_chart_data);
 
         WeeklyRef= FirebaseDatabase.getInstance().getReference("Shan/WeeklyLog");
+<<<<<<< HEAD
 
         WeeklyRef.addChildEventListener(new ChildEventListener() {
 
@@ -36,20 +37,41 @@ public class ChartData extends AppCompatActivity {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 int val = dataSnapshot.getValue(Integer.class);
                 String key = dataSnapshot.getKey();
+=======
 
-                //int val = Integer.parseInt(value);
-                int hours = val/3600;
-                int minutes = val/60;
-                int seconds = val%60;
-                String appname = "App Name: "+key;
+
+        WeeklyRef = FirebaseDatabase.getInstance().getReference().child(childID).child("WeeklyLog");
+
+        //if(accessed==1) {
+            WeeklyRef.addChildEventListener(new ChildEventListener() {
+
+                @Override
+                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                    int val = dataSnapshot.getValue(Integer.class);
+                    String key = dataSnapshot.getKey();
+                    //int val = Integer.parseInt(value);
+                    int hours = val / 3600;
+                    int minutes = val / 60;
+                    int seconds = val % 60;
+                    String appname = "App Name: " + key;
+
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
+
 
                 String duration = "\nRun Time: "+hours+" hours "+minutes+" minutes "+seconds+" seconds";
                 System.out.println(appname+minutes);
                 if(minutes>4) data.add(new ValueDataEntry(key,minutes));
             }
 
+<<<<<<< HEAD
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+=======
+                @Override
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                }
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 
             }
 
@@ -63,8 +85,17 @@ public class ChartData extends AppCompatActivity {
 
             }
 
+<<<<<<< HEAD
             @Override
             public void onCancelled(DatabaseError databaseError) {
+=======
+                }
+
+
+
+
+            });
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 
             }
         });
@@ -81,5 +112,9 @@ public class ChartData extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), WeeklyFunnel.class));
             }
         });
+<<<<<<< HEAD
+=======
+        }
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
     }
-}
+

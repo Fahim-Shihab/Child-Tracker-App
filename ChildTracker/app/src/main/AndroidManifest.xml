@@ -3,6 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.appdev.debsourav.childtracker">
 
+<<<<<<< HEAD
+=======
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.appdev.debsourav.location_track.permission.MAPS_RECEIVE" />
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.READ_SMS" />
@@ -48,6 +54,11 @@
             android:enabled="true"
             android:exported="true" />
 
+        <service
+            android:name=".MySerVice"
+            android:enabled="true"
+            android:exported="true" />
+
         <activity android:name="com.appdev.shan.childtracker.Main2Activity" />
 
         <service
@@ -60,7 +71,6 @@
             android:enabled="true"
             android:exported="true" />
 
-        <activity android:name=".Clock" />
         <activity android:name=".Alarm" />
         <activity android:name=".Calculator"></activity>
     </application>

