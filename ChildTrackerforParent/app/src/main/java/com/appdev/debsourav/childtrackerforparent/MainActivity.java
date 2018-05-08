@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
+<<<<<<< HEAD
+=======
 import com.anychart.anychart.DataEntry;
 import com.anychart.anychart.ValueDataEntry;
 import com.google.firebase.database.ChildEventListener;
@@ -20,21 +22,28 @@ import java.util.Map;
 
 //import static com.appdev.debsourav.childtrackerforparent.ChildList.childID;
 
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 
 public class MainActivity extends AppCompatActivity {
 
     ImageButton btnMsgLog, Applog, btnCallLog, btnWeekly, btnGPS;
+<<<<<<< HEAD
+    public static String childID;
+=======
 
     static List<DataEntry> wdata = new ArrayList<>();
     DatabaseReference WeeklyRef;
     static int count =1;
     Map<String,Integer> map;
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+<<<<<<< HEAD
+=======
         if(count>1) wdata.clear();
 
         setTitle("Menu");
@@ -88,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
         btnMsgLog= findViewById(R.id.btnMsg);
 
         btnMsgLog.setOnClickListener(new View.OnClickListener() {
@@ -120,9 +130,13 @@ public class MainActivity extends AppCompatActivity {
         btnWeekly.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+<<<<<<< HEAD
+                startActivity(new Intent(getApplicationContext(), ChartData.class));
+=======
                 startActivity(new Intent(getApplicationContext(), Weekly.class));
                 count++;
 
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
             }
         });
 

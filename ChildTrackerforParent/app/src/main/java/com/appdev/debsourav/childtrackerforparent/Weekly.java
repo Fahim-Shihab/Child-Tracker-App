@@ -23,7 +23,7 @@ public class Weekly extends AppCompatActivity {
 
         Pie pie = AnyChart.pie();
 
-        pie.setData(MainActivity.wdata);
+        pie.setData(ChartData.data);
 
         anyChartView.setChart(pie);
     }

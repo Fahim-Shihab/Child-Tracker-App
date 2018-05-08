@@ -1,8 +1,11 @@
 package com.appdev.debsourav.childtrackerforparent;
 
 import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+<<<<<<< HEAD
+import android.support.v4.app.FragmentActivity;
+=======
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;

@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
+<<<<<<< HEAD
+    android:orientation="vertical" android:gravity="center">
+=======
     android:orientation="vertical"
     android:background="#1115df"
     android:gravity="center">
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 
     <EditText
         android:id="@+id/newEmail"

@@ -20,7 +20,6 @@ import java.util.GregorianCalendar;
 public class MessageHistory extends AppCompatActivity {
 
     TextView txtMsgs;
-    static String childID= getUserID(FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
     static DatabaseReference msgRef;
 
@@ -35,14 +34,19 @@ public class MessageHistory extends AppCompatActivity {
         setContentView(R.layout.activity_msg_history);
         txtMsgs= findViewById(R.id.txtMsgs);
 
+        String childID= getUserID(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+        msgRef= FirebaseDatabase.getInstance().getReference().child(childID).child("MessageLog");
         //String messagelog = getAllSms(getApplicationContext());
         //txtMsgs.setText(messagelog);
 
     }
 
     public static void getAllSms(Context context) {
+<<<<<<< HEAD
+=======
         msgRef= FirebaseDatabase.getInstance().getReference().child(childID).child("MessageLog");
         msgRef.setValue(null);
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
 
         StringBuffer stringBuffer = new StringBuffer();
         ContentResolver cr = context.getContentResolver();

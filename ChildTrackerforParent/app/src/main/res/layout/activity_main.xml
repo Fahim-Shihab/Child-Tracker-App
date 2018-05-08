@@ -4,7 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
+    android:layout_marginLeft="50dp"
+    android:layout_marginStart="50dp"
+    android:layout_marginTop="50dp"
+=======
     android:background="#b4bebd"
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
     tools:context="com.appdev.debsourav.childtrackerforparent.MainActivity"
     android:orientation="vertical">
 

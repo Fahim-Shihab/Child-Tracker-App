@@ -3,7 +3,11 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+<<<<<<< HEAD
+
+=======
     android:background="#1115df"
+>>>>>>> 537bc5ef6b80d1c1ab03ccb0fc934ac0d0506434
     android:layout_height="match_parent">
 
 
