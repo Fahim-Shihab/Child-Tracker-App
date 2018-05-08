@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -60,14 +61,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }});
         if (AppStats.getUsageStatsList(this).isEmpty()) {
+
             Intent intent = new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS);
             startActivity(intent);
+            Toast.makeText(this,"Give the usage access permission to the app", Toast.LENGTH_SHORT).show();
+
         }
         startService(new Intent(getBaseContext(),MySerVice.class));
-        msghist.getAllSms(this);
-        cal.getCallDetails(this);
-        appst.printCurrentUsageStatus(this);
-
 
     }
 }

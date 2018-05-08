@@ -2,6 +2,7 @@ package com.appdev.debsourav.childtracker;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -31,6 +32,11 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        Intent intent2 = new Intent(Settings.ACTION_MANAGE_APPLICATIONS_SETTINGS);
+        startActivity(intent2);
+        Toast.makeText(this,"Turn on all the permissions",Toast.LENGTH_SHORT).show();
+
 
         setTitle("Log In");
 
